@@ -1176,3 +1176,4 @@ body.menu-open { overflow: hidden; }
 .credits__grid li { background: rgba(255,255,255,.014); border-color: var(--line-2); transition: transform .4s var(--ease), border-color .3s var(--ease), background-color .3s var(--ease), box-shadow .3s var(--ease); }
 .credits__grid li:hover { background: rgba(255,0,170,.08); border-color: rgba(255,0,170,.75); box-shadow: 0 10px 30px -14px rgba(255,0,170,.6); }
 .credits__grid li:hover svg { color: #FF4DC4; }
+.tstep:hover .tstep__vis img, .js .tstep:hover .tstep__vis img.is-loaded { transform: none; }
