@@ -34,7 +34,7 @@
   <link rel="preload" href="assets/fonts/bricolage-semibold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/bricolage-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" media="(max-width: 599.98px)" href="assets/shots/hero-podcast-m-720.webp" imagesrcset="assets/shots/hero-podcast-m-720.webp 720w, assets/shots/hero-podcast-m-1080.webp 1080w" imagesizes="94vw" fetchpriority="high">
-  <link rel="preload" as="image" media="(min-width: 600px)" href="assets/shots/hero-podcast-1200.webp" imagesrcset="assets/shots/hero-podcast-1200.webp 1200w, assets/shots/hero-podcast-1800.webp 1800w, assets/shots/hero-podcast-2560.webp 2560w" imagesizes="(min-width: 1536px) 1320px, (min-width: 1280px) 1200px, 94vw" fetchpriority="high">
+  <link rel="preload" as="image" media="(min-width: 600px)" href="assets/shots/hero-podcast-1200.webp" imagesrcset="assets/shots/hero-podcast-1200.webp 1200w, assets/shots/hero-podcast-1800.webp 1800w, assets/shots/hero-podcast-2560.webp 2560w" imagesizes="(min-width: 1536px) 1056px, (min-width: 1280px) 960px, (min-width: 768px) 78vw, 94vw" fetchpriority="high">
   <link rel="stylesheet" href="assets/styles.css">
   <script>
     // Theme + js flag before paint (no flash). Storage may be blocked — fail quietly.
@@ -116,11 +116,11 @@
         </ul>
       </nav>
       <div class="nav__actions">
-        <button class="icon-btn theme-toggle" type="button" aria-label="Switch color theme" data-theme-toggle>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Switch color theme" data-theme-toggle hidden><!-- Hidden for now: remove "hidden" to bring the light/dark switch back -->
           <svg class="i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
           <svg class="i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
         </button>
-        <a class="btn btn--primary btn--sm nav__cta" href="https://setapp.com/apps/vexel">Get on Setapp</a>
+        <a class="btn btn--primary btn--sm nav__cta" href="https://setapp.com/apps/vexel">Try free</a>
         <button class="icon-btn nav__menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu" data-menu-open>
           <svg aria-hidden="true"><use href="#i-menu"/></svg>
         </button>
@@ -138,11 +138,11 @@
       <a href="#podcasts" data-menu-link>Podcasts <span>New</span></a>
       <a href="#voices" data-menu-link>Voices</a>
       <a href="#agents" data-menu-link>Automation</a>
-      <a href="#demo" data-menu-link>Hear a sample</a>
+      <a href="#demo" data-menu-link>Hear the voices</a>
       <a href="#faq" data-menu-link>FAQ</a>
     </nav>
     <div class="menu__foot">
-      <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Get Vexel on Setapp</a>
+      <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Try free with Setapp</a>
       <p>macOS 15+ · Apple Silicon</p>
     </div>
   </div>
@@ -155,8 +155,8 @@
         <h1 id="hero-title"><span class="enter" style="--d:1">Any text.</span> <em class="enter" style="--d:2">Any voice.</em></h1>
         <p class="hero__sub enter" style="--d:3">Vexel turns articles, documents and ideas into natural speech — or a full podcast with several hosts. A calm, native workspace, right on your Mac.</p>
         <div class="hero__ctas enter" style="--d:4">
-          <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Get Vexel on Setapp <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn--ghost btn--lg" href="#demo"><svg aria-hidden="true"><use href="#i-play"/></svg> Hear a sample</a>
+          <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Try free with Setapp <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost btn--lg" href="#demo"><svg aria-hidden="true"><use href="#i-play"/></svg> Hear the voices</a>
         </div>
         <ul class="trust-row enter" style="--d:5" role="list">
           <li><svg aria-hidden="true"><use href="#i-laptop"/></svg>macOS 15+</li>
@@ -169,10 +169,24 @@
       <div class="hero__visual">
         <div class="orb" aria-hidden="true"></div>
         <div class="container">
-          <figure class="hero-shot" data-tilt>
-            <picture><source media="(max-width: 599.98px)" srcset="assets/shots/hero-podcast-m-720.webp 720w, assets/shots/hero-podcast-m-1080.webp 1080w" sizes="94vw" width="1258" height="1382"><img class="hero-shot__img" src="assets/shots/hero-podcast-1200.webp" srcset="assets/shots/hero-podcast-1200.webp 1200w, assets/shots/hero-podcast-1800.webp 1800w, assets/shots/hero-podcast-2560.webp 2560w" sizes="(min-width: 1536px) 1320px, (min-width: 1280px) 1200px, 94vw" width="2560" height="1760" alt="Vexel showing the podcast “Small Wonders — Ep. 12”: a nine-line script for three hosts, the cast panel with delivery set to Natural, and a color-coded waveform timeline" fetchpriority="high"></picture>
-            <span class="float-pill float-pill--a" aria-hidden="true"><svg><use href="#i-spark"/></svg>3 hosts, voices auto-assigned</span>
-            <span class="float-pill float-pill--b" aria-hidden="true"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span>Playing · Sam</span>
+          <figure class="hero-shot">
+            <div class="hero-shot__frame" data-tilt>
+              <picture><source media="(max-width: 599.98px)" srcset="assets/shots/hero-podcast-m-720.webp 720w, assets/shots/hero-podcast-m-1080.webp 1080w" sizes="94vw" width="1258" height="1382"><img class="hero-shot__img" src="assets/shots/hero-podcast-1200.webp" srcset="assets/shots/hero-podcast-1200.webp 1200w, assets/shots/hero-podcast-1800.webp 1800w, assets/shots/hero-podcast-2560.webp 2560w" sizes="(min-width: 1536px) 1056px, (min-width: 1280px) 960px, (min-width: 768px) 78vw, 94vw" width="2560" height="1760" alt="Vexel showing the podcast “Small Wonders — Ep. 12”: a nine-line script for three hosts, the cast panel with delivery set to Natural, and a color-coded waveform timeline" fetchpriority="high"></picture>
+              <svg class="hint-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <path style="--d:0" d="M9 40.5 L9 58.5"/>
+                <path style="--d:1" d="M80.5 23.5 L84.5 23.5"/>
+                <path style="--d:2" d="M86 55 C86 73, 72 80.5, 62.5 80.5"/>
+                <path style="--d:3" d="M36 95.5 L36 101.5"/>
+              </svg>
+              <i class="hint-dot" style="--x:9%; --y:40.5%; --d:0" aria-hidden="true"></i>
+              <i class="hint-dot" style="--x:80.5%; --y:23.5%; --d:1" aria-hidden="true"></i>
+              <i class="hint-dot" style="--x:86%; --y:55%; --d:2" aria-hidden="true"></i>
+              <i class="hint-dot" style="--x:36%; --y:95.5%; --d:3" aria-hidden="true"></i>
+              <span class="hint" style="--lx:2.2%; --ly:58.5%; --d:0" aria-hidden="true"><svg><use href="#i-podcast"/></svg><span class="hint__text"><b>Voiceovers &amp; podcasts</b><small>All in one sidebar</small></span></span>
+              <span class="hint hint--mid" style="--lx:84.5%; --ly:23.5%; --d:1" aria-hidden="true"><svg><use href="#i-spark"/></svg><span class="hint__text"><b>Cast, auto-assigned</b><small>A voice for every host</small></span></span>
+              <span class="hint hint--mid" style="--lx:31%; --ly:80.5%; --d:2" aria-hidden="true"><svg><use href="#i-sliders"/></svg><span class="hint__text"><b>Stable · Natural · Expressive</b><small>Pick the delivery, fine-tune in Advanced</small></span></span>
+              <span class="hint" style="--lx:22%; --ly:101.5%; --d:3" aria-hidden="true"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span><span class="hint__text"><b>One episode, many voices</b><small>The color timeline shows who speaks</small></span></span>
+            </div>
           </figure>
         </div>
       </div>
@@ -257,7 +271,7 @@
               <div class="chapter__num" aria-hidden="true">02</div>
               <p class="chapter__kicker">Voices</p>
               <h3 class="h2" id="ch2">Two kinds of voices. One list.</h3>
-              <p class="lead">Hi-Fi cloud voices give you the most natural sound, in five languages and many accents. The voices already on your Mac are free and work offline. Search, filter by language, and preview any voice with one click.</p>
+              <p class="lead">69 Hi-Fi cloud voices give you the most natural sound, in five languages and many accents. The voices already on your Mac are free and work offline. Search, filter by language, and preview any voice with one click.</p>
               <ul class="checks" role="list">
                 <li><svg aria-hidden="true"><use href="#i-check"/></svg>Hi-Fi badge marks the most natural voices</li>
                 <li><svg aria-hidden="true"><use href="#i-check"/></svg>Hear a sample line in the voice's own language</li>
@@ -266,8 +280,8 @@
               <p class="detail"><b>Offline?</b> Switch to Mac voices — no internet needed</p>
             </div>
             <div class="stage stage--shot reveal">
-              <div class="shot"><img class="" src="assets/shots/voice-picker-700.webp" srcset="assets/shots/voice-picker-700.webp 700w, assets/shots/voice-picker-1280.webp 1280w" sizes="(min-width: 1024px) 640px, 92vw" width="1280" height="1069" alt="Vexel voice picker with Cloud and On-device tabs, search, and a list of Hi-Fi voices with accents and flags" loading="lazy" decoding="async"></div>
-              <span class="float-pill float-pill--c" aria-hidden="true">Hi-Fi · 5 languages</span>
+              <div class="shot"><img class="" src="assets/shots/voice-languages-700.webp" srcset="assets/shots/voice-languages-700.webp 700w, assets/shots/voice-languages-999.webp 999w" sizes="(min-width: 1024px) 560px, 92vw" width="999" height="1069" alt="Vexel voice picker with the language menu open: Arabic 6, German 19, English 25, Portuguese 6 and Ukrainian 13 cloud voices" loading="lazy" decoding="async"></div>
+              <span class="float-pill float-pill--c" aria-hidden="true">69 cloud voices · 5 languages</span>
             </div>
           </article>
 
@@ -346,56 +360,205 @@
       </div>
     </section>
 
-    <!-- ============ DEMO ============ -->
+    <!-- ============ DEMO: real, pre-recorded voice clips ============ -->
     <section class="section" id="demo" aria-labelledby="demo-title">
       <div class="container">
         <div class="section-head section-head--center">
           <p class="eyebrow">Hear it in action</p>
-          <h2 class="h2" id="demo-title">Type something. Press play.</h2>
-          <p class="lead">Pick a sample or write your own line, choose a voice, and watch Vexel read along.</p>
+          <h2 class="h2" id="demo-title">Listen and compare.</h2>
+          <p class="lead">Real clips from Vexel's voice library. Tap a voice to hear it — then pick the one that fits your story.</p>
         </div>
-
-        <div class="demo reveal" data-demo>
-          <div>
-            <div class="demo__samples" role="group" aria-label="Sample texts">
-              <button class="pill-btn" type="button" aria-pressed="true" data-sample="0">Article</button>
-              <button class="pill-btn" type="button" aria-pressed="false" data-sample="1">Story</button>
-              <button class="pill-btn" type="button" aria-pressed="false" data-sample="2">Email</button>
+        <div class="listen reveal" data-listen>
+          <div class="listen__bar">
+            <div class="ltabs" role="tablist" aria-label="Voice language">
+              <button type="button" role="tab" id="vt-en" aria-controls="vp-en" aria-selected="true" tabindex="0" data-lang="en">English</button>
+              <button type="button" role="tab" id="vt-uk" aria-controls="vp-uk" aria-selected="false" tabindex="-1" data-lang="uk" lang="uk">Українська</button>
+              <button type="button" role="tab" id="vt-de" aria-controls="vp-de" aria-selected="false" tabindex="-1" data-lang="de" lang="de">Deutsch</button>
+              <button type="button" role="tab" id="vt-ar" aria-controls="vp-ar" aria-selected="false" tabindex="-1" data-lang="ar" lang="ar" dir="rtl">العربية</button>
             </div>
-            <div class="demo__editor">
-              <label class="sr-only" for="demo-text">Text to read aloud</label>
-              <textarea id="demo-text" maxlength="280" spellcheck="false">Rain is back in the forecast for Thursday. Pack a light jacket, and leave a little earlier than usual — the bridge will be slow.</textarea>
-              <div class="demo__readout" aria-hidden="true" data-readout></div>
-            </div>
-            <div class="demo__meta"><span data-count>0 / 280</span><span>English detected</span></div>
-            <div class="demo__player">
-              <button class="play-btn" type="button" aria-pressed="false" aria-label="Play sample" data-play>
-                <svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg>
-                <svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg>
-              </button>
-              <div class="demo__wave" aria-hidden="true"><div class="wave" data-wave="72" data-seed="5" data-demo-wave></div></div>
-              <span class="demo__time" data-time>0:00</span>
-            </div>
-            <p class="sr-only" aria-live="polite" data-status></p>
+            <p class="listen__note">69 cloud voices · 5 languages · 170+ Mac voices</p>
           </div>
-
-          <div class="demo__side">
-            <h3 id="voice-label">Voice</h3>
-            <div class="tabs" role="tablist" aria-label="Voice type">
-              <button type="button" role="tab" id="tab-cloud" aria-selected="true" aria-controls="panel-cloud" data-tab="cloud">Cloud · Hi-Fi</button>
-              <button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="panel-mac" data-tab="mac" tabindex="-1">On this Mac</button>
-            </div>
-            <div class="voices" role="radiogroup" aria-labelledby="voice-label" id="panel-cloud" data-panel="cloud">
-              <button class="voice" type="button" role="radio" aria-checked="true"><span class="voice__av" style="background:var(--spk-1)">NO</span><span><b>Noor</b><small>Warm · English (UK)</small></span><span class="voice__tag">HI-FI</span></button>
-              <button class="voice" type="button" role="radio" aria-checked="false" tabindex="-1"><span class="voice__av" style="background:var(--spk-2)">SA</span><span><b>Sam</b><small>Clear · English (US)</small></span><span class="voice__tag">HI-FI</span></button>
-              <button class="voice" type="button" role="radio" aria-checked="false" tabindex="-1"><span class="voice__av" style="background:var(--spk-3)">JO</span><span><b>Jo</b><small>Bright · English (IN)</small></span><span class="voice__tag">HI-FI</span></button>
-            </div>
-            <div class="voices" role="radiogroup" aria-labelledby="voice-label" id="panel-mac" data-panel="mac" hidden>
-              <button class="voice" type="button" role="radio" aria-checked="true"><span class="voice__av" style="background:#C9CBD3">SY</span><span><b>System voice</b><small>English (US) · Enhanced</small></span><span class="voice__tag voice__tag--off">OFFLINE</span></button>
-              <button class="voice" type="button" role="radio" aria-checked="false" tabindex="-1"><span class="voice__av" style="background:#C9CBD3">SY</span><span><b>System voice</b><small>English (UK) · Premium</small></span><span class="voice__tag voice__tag--off">OFFLINE</span></button>
-            </div>
-            <p class="demo__note">A visual preview. Real voice clips are coming to this page soon. <!-- TODO(asset): real sample clips per voice --></p>
-          </div>
+            <ul class="vgrid" role="list" id="vp-en" data-lang-panel="en" aria-labelledby="vt-en">
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/marta.m4a" aria-label="Play Marta, conversational, Female, American">
+                  <span class="vcard__av" style="background:var(--spk-1)" aria-hidden="true">M</span>
+                  <span class="vcard__who"><b>Marta</b><small>Female · American</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="3"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Conversational</span><span class="vcard__hifi">HI-FI</span><span class="vcard__dur">0:02</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/neal.m4a" aria-label="Play C. L. Neal, Male, American">
+                  <span class="vcard__av" style="background:var(--spk-2)" aria-hidden="true">C</span>
+                  <span class="vcard__who"><b>C. L. Neal</b><small>Male · American</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="10"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__hifi">HI-FI</span><span class="vcard__dur">0:03</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/amara.m4a" aria-label="Play Amara, conversational, Female, Indian">
+                  <span class="vcard__av" style="background:var(--spk-3)" aria-hidden="true">A</span>
+                  <span class="vcard__who"><b>Amara</b><small>Female · Indian</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="17"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Conversational</span><span class="vcard__hifi">HI-FI</span><span class="vcard__dur">0:03</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/theo.m4a" aria-label="Play Theo, Male, British">
+                  <span class="vcard__av" style="background:var(--spk-4)" aria-hidden="true">T</span>
+                  <span class="vcard__who"><b>Theo</b><small>Male · British</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="24"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__hifi">HI-FI</span><span class="vcard__dur">0:03</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/victoria-commercial.m4a" aria-label="Play Victoria, commercial, Female, American">
+                  <span class="vcard__av" style="background:var(--spk-1)" aria-hidden="true">V</span>
+                  <span class="vcard__who"><b>Victoria</b><small>Female · American</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="31"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Commercial</span><span class="vcard__hifi">HI-FI</span><span class="vcard__dur">0:03</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/christian.m4a" aria-label="Play Christian Rosselli, Male, American">
+                  <span class="vcard__av" style="background:var(--spk-2)" aria-hidden="true">C</span>
+                  <span class="vcard__who"><b>Christian Rosselli</b><small>Male · American</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="38"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__hifi">HI-FI</span><span class="vcard__dur">0:03</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/musa.m4a" aria-label="Play Musa, Male, Nigerian-British">
+                  <span class="vcard__av" style="background:var(--spk-3)" aria-hidden="true">M</span>
+                  <span class="vcard__who"><b>Musa</b><small>Male · Nigerian-British</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="45"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__dur">0:03</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/khadija.m4a" aria-label="Play Khadija, Female, Moroccan">
+                  <span class="vcard__av" style="background:var(--spk-4)" aria-hidden="true">K</span>
+                  <span class="vcard__who"><b>Khadija</b><small>Female · Moroccan</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="52"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__dur">0:03</span></span>
+                </button>
+              </li>
+            </ul>
+            <ul class="vgrid" role="list" id="vp-uk" data-lang-panel="uk" aria-labelledby="vt-uk" hidden>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/olesia-conversation.m4a" aria-label="Play Olesia, conversational, Female, Ukrainian">
+                  <span class="vcard__av" style="background:var(--spk-1)" aria-hidden="true">O</span>
+                  <span class="vcard__who"><b>Olesia</b><small>Female · Ukrainian</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="3"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Conversational</span><span class="vcard__dur">0:04</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/yevhen-audiobook.m4a" aria-label="Play Yevhen, audiobook, Male, Ukrainian">
+                  <span class="vcard__av" style="background:var(--spk-2)" aria-hidden="true">Y</span>
+                  <span class="vcard__who"><b>Yevhen</b><small>Male · Ukrainian</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="10"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Audiobook</span><span class="vcard__dur">0:05</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/oleksandr-radio.m4a" aria-label="Play Oleksandr, radio, Male, Ukrainian">
+                  <span class="vcard__av" style="background:var(--spk-3)" aria-hidden="true">O</span>
+                  <span class="vcard__who"><b>Oleksandr</b><small>Male · Ukrainian</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="17"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Radio</span><span class="vcard__dur">0:05</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/roksolana-conversation.m4a" aria-label="Play Roksolana, conversational, Female, Ukrainian">
+                  <span class="vcard__av" style="background:var(--spk-4)" aria-hidden="true">R</span>
+                  <span class="vcard__who"><b>Roksolana</b><small>Female · Ukrainian</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="24"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Conversational</span><span class="vcard__dur">0:04</span></span>
+                </button>
+              </li>
+            </ul>
+            <ul class="vgrid" role="list" id="vp-de" data-lang-panel="de" aria-labelledby="vt-de" hidden>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/helmut-audiobook-1.m4a" aria-label="Play Helmut, audiobook, Male, German">
+                  <span class="vcard__av" style="background:var(--spk-1)" aria-hidden="true">H</span>
+                  <span class="vcard__who"><b>Helmut</b><small>Male · German</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="3"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Audiobook</span><span class="vcard__dur">0:06</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/andreas-meditation.m4a" aria-label="Play Andreas, meditation, Male, German">
+                  <span class="vcard__av" style="background:var(--spk-2)" aria-hidden="true">A</span>
+                  <span class="vcard__who"><b>Andreas</b><small>Male · German</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="10"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Meditation</span><span class="vcard__dur">0:06</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/christian-audiobook-1.m4a" aria-label="Play Christian, audiobook, Male, German">
+                  <span class="vcard__av" style="background:var(--spk-3)" aria-hidden="true">C</span>
+                  <span class="vcard__who"><b>Christian</b><small>Male · German</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="17"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Audiobook</span><span class="vcard__dur">0:05</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/nico-announcement.m4a" aria-label="Play Nico, announcement, Male, German">
+                  <span class="vcard__av" style="background:var(--spk-4)" aria-hidden="true">N</span>
+                  <span class="vcard__who"><b>Nico</b><small>Male · German</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="24"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Announcement</span><span class="vcard__dur">0:05</span></span>
+                </button>
+              </li>
+            </ul>
+            <ul class="vgrid" role="list" id="vp-ar" data-lang-panel="ar" aria-labelledby="vt-ar" hidden>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/mohammad_calm.m4a" aria-label="Play Mohammad, calm, Male, Arabic">
+                  <span class="vcard__av" style="background:var(--spk-1)" aria-hidden="true">M</span>
+                  <span class="vcard__who"><b>Mohammad</b><small>Male · Arabic</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="3"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Calm</span><span class="vcard__dur">0:13</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/ahmed_advertisement.m4a" aria-label="Play Ahmed, advertisement, Male, Arabic">
+                  <span class="vcard__av" style="background:var(--spk-2)" aria-hidden="true">A</span>
+                  <span class="vcard__who"><b>Ahmed</b><small>Male · Arabic</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="10"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Advertisement</span><span class="vcard__dur">0:10</span></span>
+                </button>
+              </li>
+              <li class="vcard">
+                <button class="vcard__btn" type="button" aria-pressed="false" data-src="assets/audio/mohammad_casual.m4a" aria-label="Play Mohammad, casual, Male, Arabic">
+                  <span class="vcard__av" style="background:var(--spk-3)" aria-hidden="true">M</span>
+                  <span class="vcard__who"><b>Mohammad</b><small>Male · Arabic</small></span>
+                  <span class="vcard__play" aria-hidden="true"><svg class="i-play"><use href="#i-play"/></svg><svg class="i-pause"><use href="#i-pause"/></svg></span>
+                  <span class="vcard__wave" aria-hidden="true"><span class="wave" data-wave="36" data-seed="17"></span></span>
+                  <span class="vcard__meta" aria-hidden="true"><span class="vcard__style">Casual</span><span class="vcard__dur">0:09</span></span>
+                </button>
+              </li>
+            </ul>
+          <p class="sr-only" aria-live="polite" data-status></p>
+          <!-- TODO(copy): clips are the app's bundled previews; confirm voice/style labels and usage rights before launch -->
         </div>
       </div>
     </section>
@@ -436,8 +599,15 @@
         <div class="section-head">
           <p class="eyebrow">The usual way vs Vexel</p>
           <h2 class="h2" id="compare-title">Less tab-juggling. More listening.</h2>
-          <p class="lead">Most text-to-speech lives in a browser tab behind a sign-up. Vexel lives on your Mac.</p>
+          <p class="lead">Most text-to-speech lives in a browser tab behind a sign-up. Vexel lives on your Mac — with 240+ voices to choose from.</p>
         </div>
+        <!-- TODO(copy): counts from the app picker on 2026-09-30: cloud EN 25, DE 19, UK 13, AR 6, PT 6 = 69; macOS voices on this Mac 179 in 38 languages (varies by Mac) — recheck before launch -->
+        <ul class="stats reveal" role="list">
+          <li><b data-count="240">240+</b><span>voices in one picker</span></li>
+          <li><b data-count="69">69</b><span>Hi-Fi cloud voices in 5 languages</span></li>
+          <li><b data-count="170">170+</b><span>free voices built into macOS</span></li>
+          <li><b data-count="38">38</b><span>languages with Mac voices</span></li>
+        </ul>
         <div class="compare-wrap reveal">
           <table class="compare">
             <caption class="sr-only">Comparison of a typical web text-to-speech tool and Vexel</caption>
@@ -445,6 +615,7 @@
               <tr><th scope="col">What you need</th><th scope="col">Typical web tool</th><th scope="col" class="vx"><span class="vx-head"><img src="assets/img/app-icon-128.webp" alt="" width="20" height="20" loading="lazy">Vexel</span></th></tr>
             </thead>
             <tbody>
+              <tr><th scope="row">Voices to choose from</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Varies by plan</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>240+ in one list</span></td></tr>
               <tr><th scope="row">Create an account</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Usually required</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>Not needed</span></td></tr>
               <tr><th scope="row">Work offline</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>No</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>With Mac voices</span></td></tr>
               <tr><th scope="row">Open PDF, EPUB, DOCX</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Often limited</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>7 formats</span></td></tr>
@@ -458,7 +629,8 @@
     </section>
 
     <!-- ============ PROOF (placeholders) ============ -->
-    <section class="section section--band" aria-labelledby="proof-title">
+    <!-- Hidden for now: remove the hidden attribute to bring the Stories section back -->
+    <section class="section section--band" aria-labelledby="proof-title" hidden>
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Stories</p>
@@ -510,7 +682,7 @@
               <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Top up any time</b> from inside Vexel.</span></li>
             </ul>
             <div class="get-card__cta">
-              <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Get Vexel on Setapp <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Try free with Setapp <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
               <small>Price: TODO(copy)</small>
             </div>
           </div>
@@ -542,7 +714,7 @@
           <details><summary>Does it work offline?<span class="plus" aria-hidden="true"></span></summary><div><p>Yes — with the voices built into macOS. Hi-Fi cloud voices and Make with AI need an internet connection.</p></div></details>
           <details><summary>What can I import?<span class="plus" aria-hidden="true"></span></summary><div><p>PDF, EPUB, DOCX, Markdown, RTF, RTFD and TXT. You can also paste text or dictate it.</p></div></details>
           <details><summary>What can I export?<span class="plus" aria-hidden="true"></span></summary><div><p>WAV audio — a single voice, or a full multi-host episode in one file.</p></div></details>
-          <details><summary>Which languages are supported?<span class="plus" aria-hidden="true"></span></summary><div><p>Hi-Fi cloud voices speak English (with several accents), Ukrainian, German, Brazilian Portuguese and Arabic. Mac voices cover every language installed in macOS.</p><p>The app itself is available in English, German, Spanish, French, Portuguese, Ukrainian, Japanese and Arabic.</p></div></details>
+          <details><summary>Which languages are supported?<span class="plus" aria-hidden="true"></span></summary><div><p>69 Hi-Fi cloud voices in five languages: English (25, with several accents), German (19), Ukrainian (13), Arabic (6) and Brazilian Portuguese (6). On top of that, Vexel can use the 170+ free voices built into macOS, in 38 languages.</p><p>The app itself is available in English, German, Spanish, French, Portuguese, Ukrainian, Japanese and Arabic.</p></div></details>
           <details><summary>Do I need an account? What happens to my text?<span class="plus" aria-hidden="true"></span></summary><div><p>There's no Vexel account. Audio you make is stored on your Mac and only leaves when you export it.</p><p>When you use a cloud voice, the text is sent securely to be voiced. Analytics are anonymous, never include your text or audio, and can be turned off in Settings.</p></div></details>
           <details><summary>Which Macs are supported?<span class="plus" aria-hidden="true"></span></summary><div><p>Macs with Apple Silicon (M1 or newer) running macOS 15 Sequoia or later.</p></div></details>
         </div>
@@ -556,8 +728,8 @@
         <h2 id="final-title">What are we making?</h2>
         <p>Turn reading into listening — a chapter, a briefing, a whole show.</p>
         <div class="hero__ctas">
-          <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Get Vexel on Setapp <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn--ghost btn--lg" href="#demo"><svg aria-hidden="true"><use href="#i-play"/></svg> Hear a sample</a>
+          <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Try free with Setapp <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost btn--lg" href="#demo"><svg aria-hidden="true"><use href="#i-play"/></svg> Hear the voices</a>
         </div>
         <ul class="chips" role="list">
           <li><svg aria-hidden="true"><use href="#i-user-off"/></svg>No account</li>

@@ -94,102 +94,40 @@
     });
   };
 
-  /* ---------- Demo ---------- */
-  const demo = document.querySelector('[data-demo]');
-  if (demo) {
-    const samples = [
-      'Rain is back in the forecast for Thursday. Pack a light jacket, and leave a little earlier than usual — the bridge will be slow.',
-      'The lighthouse keeper counted the ships each night. Some nights there were none, so she counted the stars instead.',
-      'Hi team — a quick update before Friday. The draft is ready for review, and the audio version is attached so you can listen on the go.'
-    ];
-    const ta = demo.querySelector('textarea');
-    const readout = demo.querySelector('[data-readout]');
-    const playBtn = demo.querySelector('[data-play]');
-    const timeEl = demo.querySelector('[data-time]');
-    const countEl = demo.querySelector('[data-count]');
-    const statusEl = demo.querySelector('[data-status]');
-    const bars = [...demo.querySelectorAll('[data-demo-wave] i')];
-    const baseH = bars.map(b => b.style.height);
-    const sampleBtns = [...demo.querySelectorAll('[data-sample]')];
-    let timer = null, raf = null, words = [], idx = 0, t0 = 0, total = 0;
-    const MS_PER_WORD = 330;
-
-    const fmt = ms => { const s = Math.round(ms / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
-    const updateCount = () => { countEl.textContent = `${ta.value.length} / ${ta.maxLength}`; };
-    const voiceName = () => demo.querySelector('.voices:not([hidden]) [aria-checked="true"] b')?.textContent || 'voice';
-
-    const stop = (finished = false) => {
-      clearInterval(timer); cancelAnimationFrame(raf); timer = raf = null;
-      demo.classList.remove('is-playing');
-      playBtn.setAttribute('aria-pressed', 'false'); playBtn.setAttribute('aria-label', 'Play sample');
-      bars.forEach((b, i) => { b.style.height = baseH[i]; b.classList.remove('lit'); });
-      ta.readOnly = false;
-      if (finished) statusEl.textContent = 'Finished reading.';
-      timeEl.textContent = fmt(total);
+  /* ---------- Listen and compare (pre-recorded clips) ---------- */
+  const listen = document.querySelector('[data-listen]');
+  if (listen) {
+    const audio = new Audio(); audio.preload = 'none';
+    const status = listen.querySelector('[data-status]');
+    let current = null, raf = null;
+    const bars = btn => [...btn.querySelectorAll('.wave i')];
+    const reset = btn => {
+      if (!btn) return;
+      btn.setAttribute('aria-pressed', 'false'); btn.closest('.vcard').classList.remove('is-playing');
+      bars(btn).forEach(b => b.classList.remove('lit'));
     };
-
-    const start = () => {
-      const text = ta.value.trim();
-      if (!text) { ta.focus(); return; }
-      const tokens = text.split(/(\s+)/);
-      readout.innerHTML = '';
-      words = [];
-      tokens.forEach(tok => {
-        if (/^\s+$/.test(tok)) { readout.appendChild(document.createTextNode(tok)); return; }
-        const s = document.createElement('span'); s.className = 'w'; s.textContent = tok; readout.appendChild(s); words.push(s);
-      });
-      idx = 0; total = words.length * MS_PER_WORD; t0 = performance.now();
-      demo.classList.add('is-playing'); ta.readOnly = true;
-      playBtn.setAttribute('aria-pressed', 'true'); playBtn.setAttribute('aria-label', 'Pause sample');
-      statusEl.textContent = `Reading with ${voiceName()}.`;
-
-      const step = () => {
-        if (idx > 0) { words[idx - 1].classList.remove('now'); words[idx - 1].classList.add('done'); }
-        if (idx >= words.length) { stop(true); return; }
-        words[idx].classList.add('now');
-        idx++;
-      };
-      step();
-      timer = setInterval(step, MS_PER_WORD);
-
-      const animate = now => {
-        const p = Math.min(1, (now - t0) / total);
-        const lit = Math.floor(p * bars.length);
-        bars.forEach((b, i) => {
-          b.classList.toggle('lit', i <= lit);
-          if (!reduceMotion()) {
-            const jitter = i === lit || Math.abs(i - lit) < 3 ? (0.55 + Math.random() * 0.45) : 1;
-            b.style.height = `calc(${baseH[i]} * ${jitter.toFixed(2)})`;
-          }
-        });
-        timeEl.textContent = fmt(now - t0);
-        if (p < 1) raf = requestAnimationFrame(animate);
-      };
-      raf = requestAnimationFrame(animate);
+    const tick = () => {
+      if (!current || !audio.duration) { raf = requestAnimationFrame(tick); return; }
+      const bs = bars(current), lit = Math.floor((audio.currentTime / audio.duration) * bs.length);
+      bs.forEach((b, i) => b.classList.toggle('lit', i <= lit));
+      if (!audio.paused) raf = requestAnimationFrame(tick);
     };
-
-    playBtn.addEventListener('click', () => (timer ? stop() : start()));
-    ta.addEventListener('input', () => { updateCount(); sampleBtns.forEach(b => b.setAttribute('aria-pressed', 'false')); });
-    sampleBtns.forEach(btn => btn.addEventListener('click', () => {
+    const stop = () => { audio.pause(); cancelAnimationFrame(raf); reset(current); current = null; };
+    listen.querySelectorAll('.vcard__btn').forEach(btn => btn.addEventListener('click', () => {
+      if (current === btn) { stop(); status.textContent = 'Paused.'; return; }
       stop();
-      ta.value = samples[+btn.dataset.sample];
-      sampleBtns.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
-      updateCount();
-      total = ta.value.trim().split(/\s+/).length * MS_PER_WORD; timeEl.textContent = fmt(total);
+      current = btn; audio.src = btn.dataset.src;
+      btn.setAttribute('aria-pressed', 'true'); btn.closest('.vcard').classList.add('is-playing');
+      audio.play().then(() => { raf = requestAnimationFrame(tick); status.textContent = `Playing ${btn.querySelector('b').textContent}.`; })
+        .catch(() => { reset(btn); current = null; status.textContent = 'Could not play this clip.'; });
     }));
-    updateCount();
-    total = ta.value.trim().split(/\s+/).length * MS_PER_WORD; timeEl.textContent = fmt(total);
+    audio.addEventListener('ended', () => { bars(current || document.body).forEach(b => b.classList.add('lit')); setTimeout(stop, 250); });
 
-    // Voice type tabs
-    const tabs = [...demo.querySelectorAll('[role="tab"]')];
+    const tabs = [...listen.querySelectorAll('[role="tab"]')];
     roving(tabs, tab => {
+      stop();
       tabs.forEach(t => { const on = t === tab; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; });
-      demo.querySelectorAll('[data-panel]').forEach(p => { p.hidden = p.dataset.panel !== tab.dataset.tab; });
-    });
-    // Voice radios
-    demo.querySelectorAll('[role="radiogroup"]').forEach(group => {
-      const radios = [...group.querySelectorAll('[role="radio"]')];
-      roving(radios, r => radios.forEach(x => { const on = x === r; x.setAttribute('aria-checked', String(on)); x.tabIndex = on ? 0 : -1; }));
+      listen.querySelectorAll('[data-lang-panel]').forEach(p => { p.hidden = p.dataset.langPanel !== tab.dataset.lang; });
     });
   }
 
@@ -197,7 +135,7 @@
   const calm = reduceMotion();
 
   // Hero screenshot: starts slightly tilted back, settles flat as you scroll
-  const heroImg = document.querySelector('.hero-shot__img');
+  const heroImg = document.querySelector('.hero-shot__frame');
   if (heroImg && !calm) {
     let ticking = false;
     const tilt = () => {
@@ -219,6 +157,26 @@
       orb.style.setProperty('--ox', x.toFixed(1) + 'px');
       orb.style.setProperty('--oy', y.toFixed(1) + 'px');
     }, { passive: true });
+  }
+
+  // Stats count up once when they come into view
+  const stats = document.querySelector('.stats');
+  if (stats && !calm && 'IntersectionObserver' in window) {
+    const nums = [...stats.querySelectorAll('[data-count]')];
+    const finals = nums.map(n => n.textContent);
+    nums.forEach(n => { n.textContent = '0'; });
+    const so = new IntersectionObserver(([en]) => {
+      if (!en.isIntersecting) return;
+      so.disconnect();
+      const t0 = performance.now(), dur = 1400;
+      const step = now => {
+        const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+        nums.forEach((n, i) => { n.textContent = p < 1 ? String(Math.round(+n.dataset.count * e)) : finals[i]; });
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }, { threshold: .4 });
+    so.observe(stats);
   }
 
   // Chapter numbers light up; eyebrow lines draw in
