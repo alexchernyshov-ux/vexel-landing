@@ -817,3 +817,22 @@ body.menu-open { overflow: hidden; }
 .chapter.is-active .chapter__num text { filter: drop-shadow(0 0 16px rgba(255,0,170,.75)); }
 @keyframes draw { from { stroke-dashoffset: 520; } to { stroke-dashoffset: 0; } }
 @media (prefers-reduced-motion: reduce) { .js .chapter__num text { stroke-dashoffset: 0 !important; animation: none !important; } }
+
+/* 01: two straight screenshots, offset */
+.stage--duo { display: grid; grid-template-columns: repeat(12, 1fr); align-items: start; }
+.stage--duo .shot--ai { grid-column: 1 / 8; grid-row: 1; z-index: 1; opacity: .92; }
+.stage--duo .shot--import { grid-column: 5 / 13; grid-row: 1; margin-top: 18%; z-index: 2; }
+.float-pill--f { left: 4%; top: 4%; }
+.float-pill--g { right: 4%; bottom: 5%; animation-delay: -3s; }
+.js .stage--duo.reveal .shot--ai { transform: translateX(-12px); transition: transform 1s var(--ease) .1s; }
+.js .stage--duo.reveal .shot--import { transform: translateX(12px); transition: transform 1s var(--ease) .2s; }
+.js .stage--duo.reveal.is-in .shot { transform: none; }
+
+/* How it works: Setapp */
+.mini--setapp b { display: block; font-size: 13px; }
+.mini--setapp small { display: block; font-size: 11px; color: var(--app-t3); }
+.mini--setapp img { width: 40px; height: 40px; border-radius: 10px; }
+.mini__install { padding: 6px 14px; border-radius: 999px; background: #FF00AA; color: #fff; font-weight: 700; font-size: 12px; }
+.steps__chips { margin-top: var(--s-6); }
+.steps__cta { display: flex; justify-content: center; margin-top: var(--s-5); }
+@media (max-width: 559.98px) { .steps__cta .btn { width: 100%; } }
