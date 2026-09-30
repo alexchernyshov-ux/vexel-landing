@@ -182,8 +182,8 @@
   // Chapter numbers light up; eyebrow lines draw in
   if ('IntersectionObserver' in window) {
     const active = new IntersectionObserver(entries => {
-      entries.forEach(en => en.target.classList.toggle('is-active', en.isIntersecting));
-    }, { rootMargin: '-35% 0px -35% 0px' });
+      entries.forEach(en => { en.target.classList.toggle('is-active', en.isIntersecting); if (en.isIntersecting) en.target.classList.add('is-drawn'); });
+    }, { rootMargin: '-20% 0px -30% 0px' });
     document.querySelectorAll('.chapter').forEach(el => active.observe(el));
     const heads = new IntersectionObserver(entries => {
       entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-in'); heads.unobserve(en.target); } });
