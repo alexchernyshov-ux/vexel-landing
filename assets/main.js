@@ -222,6 +222,19 @@
     box.querySelector('[data-studio]').textContent = data[i][1];
     box.querySelector('[data-desc]').textContent = data[i][2];
   };
+  // Keep the panel the height of its tallest project, so switching never shifts the layout
+  const lockHeight = () => {
+    const title = box.querySelector('[data-title]'), studio = box.querySelector('[data-studio]'), desc = box.querySelector('[data-desc]');
+    const keep = [title.textContent, studio.textContent, desc.textContent];
+    panel.style.minHeight = '';
+    let max = 0;
+    data.forEach(d => { title.textContent = d[0]; studio.textContent = d[1]; desc.textContent = d[2]; max = Math.max(max, panel.offsetHeight); });
+    [title.textContent, studio.textContent, desc.textContent] = keep;
+    panel.style.minHeight = max + 'px';
+  };
+  lockHeight();
+  window.addEventListener('resize', lockHeight, { passive: true });
+  document.fonts && document.fonts.ready.then(lockHeight);
   tabs.forEach((t, i) => {
     t.addEventListener('click', () => set(i));
     t.addEventListener('keydown', e => {

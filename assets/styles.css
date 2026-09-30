@@ -1177,3 +1177,20 @@ body.menu-open { overflow: hidden; }
 .credits__grid li:hover { background: rgba(255,0,170,.08); border-color: rgba(255,0,170,.75); box-shadow: 0 10px 30px -14px rgba(255,0,170,.6); }
 .credits__grid li:hover svg { color: #FF4DC4; }
 .tstep:hover .tstep__vis img, .js .tstep:hover .tstep__vis img.is-loaded { transform: none; }
+
+/* Footer: link columns sit to the right and stay narrow */
+@media (min-width: 768px) {
+  .footer__grid { grid-template-columns: 1fr auto auto; column-gap: clamp(64px, 9vw, 140px); }
+  .footer__grid nav { min-width: 150px; }
+}
+
+/* Respeecher card: footer-style glowing frame in purple, lifted over the section line */
+.rsp-sec { position: relative; z-index: 3; padding-top: 0; }
+.rsp-card { margin-top: -20px; box-shadow: 0 -24px 90px -30px rgba(139,92,246,.55), 0 0 0 1px rgba(255,255,255,.03); }
+.rsp-card::before {
+  background: linear-gradient(180deg, rgba(196,160,255,.95) 0%, rgba(139,92,246,.4) 16%, rgba(255,255,255,.07) 55%, rgba(139,92,246,.12) 100%);
+}
+.rsp-card::after { left: 18%; right: 18%; width: auto; opacity: .75; box-shadow: 0 0 28px 7px rgba(139,92,246,.65); }
+.rsp-sec { overflow: visible; }
+.rsp-waves { border-radius: 32px; }
+.rsp-card { background: radial-gradient(60% 80% at 100% 0%, rgba(139,92,246,.22), transparent 60%), radial-gradient(50% 70% at 0% 100%, rgba(192,132,252,.12), transparent 60%), linear-gradient(var(--surface-1), var(--surface-1)), var(--bg); }
