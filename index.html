@@ -93,6 +93,9 @@
       <symbol id="i-cloud" viewBox="0 0 20 20"><path d="M6 15.5h8.3a3.2 3.2 0 0 0 .3-6.4 4.8 4.8 0 0 0-9.2-.9A3.7 3.7 0 0 0 6 15.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
       <symbol id="i-laptop" viewBox="0 0 20 20"><rect x="4" y="4" width="12" height="8.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 15.5h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
       <symbol id="i-motion" viewBox="0 0 20 20"><circle cx="10" cy="10" r="3" fill="currentColor"/><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".5"/><path d="M2.5 10h2M15.5 10h2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".5"/></symbol>
+      <symbol id="i-award" viewBox="0 0 20 20"><circle cx="10" cy="8" r="5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 12.3L6 18l4-2 4 2-1-5.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+      <symbol id="i-film" viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M6.5 4v12M13.5 4v12M3 8h3.5M3 12h3.5M13.5 8H17M13.5 12H17" stroke="currentColor" stroke-width="1.4"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 20 20"><path d="M10 2.8l6 2.4v4.6c0 3.7-2.5 6.3-6 7.4-3.5-1.1-6-3.7-6-7.4V5.2l6-2.4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M7.3 10l1.9 1.9 3.6-3.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
       <symbol id="i-plus" viewBox="0 0 20 20"><path d="M10 4.5v11M4.5 10h11" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
       <symbol id="i-inspector" viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="12" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 4v12" stroke="currentColor" stroke-width="1.5"/></symbol>
       <symbol id="i-sidebar" viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="12" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 4v12" stroke="currentColor" stroke-width="1.5"/></symbol>
@@ -161,7 +164,7 @@
         <ul class="trust-row enter" style="--d:5" role="list">
           <li><svg aria-hidden="true"><use href="#i-laptop"/></svg>macOS 15+</li>
           <li><svg aria-hidden="true"><use href="#i-chip"/></svg>Apple Silicon native</li>
-          <li><svg aria-hidden="true"><use href="#i-user-off"/></svg>No account</li>
+          <li><svg aria-hidden="true"><use href="#i-user-off"/></svg>Free trial with your Setapp account</li>
           <!-- TODO(copy): rating badge slot — add only when there is a real rating to show -->
         </ul>
       </div>
@@ -172,19 +175,14 @@
           <figure class="hero-shot">
             <div class="hero-shot__frame" data-tilt>
               <picture><source media="(max-width: 599.98px)" srcset="assets/shots/hero-podcast-m-720.webp 720w, assets/shots/hero-podcast-m-1080.webp 1080w" sizes="94vw" width="1258" height="1382"><img class="hero-shot__img" src="assets/shots/hero-podcast-1200.webp" srcset="assets/shots/hero-podcast-1200.webp 1200w, assets/shots/hero-podcast-1800.webp 1800w, assets/shots/hero-podcast-2560.webp 2560w" sizes="(min-width: 1536px) 1056px, (min-width: 1280px) 960px, (min-width: 768px) 78vw, 94vw" width="2560" height="1760" alt="Vexel showing the podcast “Small Wonders — Ep. 12”: a nine-line script for three hosts, the cast panel with delivery set to Natural, and a color-coded waveform timeline" fetchpriority="high"></picture>
-              <svg class="hint-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-                <path style="--d:0" d="M9 40.5 L9 58.5"/>
-                <path style="--d:1" d="M80.5 23.5 L84.5 23.5"/>
-                <path style="--d:2" d="M86 55 C86 73, 72 80.5, 62.5 80.5"/>
-                <path style="--d:3" d="M36 95.5 L36 101.5"/>
-              </svg>
+              <svg class="hint-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="hl" style="--d:0" d="M9 40.5 C 5.5 46, 12.5 52, 9 58.5" pathLength="100"/><path class="hl-pulse" style="--d:0" d="M9 40.5 C 5.5 46, 12.5 52, 9 58.5" pathLength="100"/><path class="hl" style="--d:1" d="M80.5 23.5 C 81.5 20.5, 83.5 26.5, 84.5 23.5" pathLength="100"/><path class="hl-pulse" style="--d:1" d="M80.5 23.5 C 81.5 20.5, 83.5 26.5, 84.5 23.5" pathLength="100"/><path class="hl" style="--d:2" d="M86 55 C 91 66, 70 64, 72 73 S 64 80.5, 60.5 80.5" pathLength="100"/><path class="hl-pulse" style="--d:2" d="M86 55 C 91 66, 70 64, 72 73 S 64 80.5, 60.5 80.5" pathLength="100"/><path class="hl" style="--d:3" d="M36 95.5 C 33 97.5, 39 99.5, 36 101.5" pathLength="100"/><path class="hl-pulse" style="--d:3" d="M36 95.5 C 33 97.5, 39 99.5, 36 101.5" pathLength="100"/></svg>
               <i class="hint-dot" style="--x:9%; --y:40.5%; --d:0" aria-hidden="true"></i>
               <i class="hint-dot" style="--x:80.5%; --y:23.5%; --d:1" aria-hidden="true"></i>
               <i class="hint-dot" style="--x:86%; --y:55%; --d:2" aria-hidden="true"></i>
               <i class="hint-dot" style="--x:36%; --y:95.5%; --d:3" aria-hidden="true"></i>
               <span class="hint" style="--lx:2.2%; --ly:58.5%; --d:0" aria-hidden="true"><svg><use href="#i-podcast"/></svg><span class="hint__text"><b>Voiceovers &amp; podcasts</b><small>All in one sidebar</small></span></span>
               <span class="hint hint--mid" style="--lx:84.5%; --ly:23.5%; --d:1" aria-hidden="true"><svg><use href="#i-spark"/></svg><span class="hint__text"><b>Cast, auto-assigned</b><small>A voice for every host</small></span></span>
-              <span class="hint hint--mid" style="--lx:31%; --ly:80.5%; --d:2" aria-hidden="true"><svg><use href="#i-sliders"/></svg><span class="hint__text"><b>Stable · Natural · Expressive</b><small>Pick the delivery, fine-tune in Advanced</small></span></span>
+              <span class="hint hint--end" style="--lx:60.5%; --ly:80.5%; --d:2" aria-hidden="true"><svg><use href="#i-sliders"/></svg><span class="hint__text"><b>Stable · Natural · Expressive</b><small>Pick the delivery, fine-tune in Advanced</small></span></span>
               <span class="hint" style="--lx:22%; --ly:101.5%; --d:3" aria-hidden="true"><span class="eq"><i></i><i></i><i></i><i></i><i></i></span><span class="hint__text"><b>One episode, many voices</b><small>The color timeline shows who speaks</small></span></span>
             </div>
           </figure>
@@ -222,7 +220,7 @@
           <article class="card reveal">
             <div class="card__icon"><svg aria-hidden="true"><use href="#i-lock"/></svg></div>
             <h3 class="h3">Private by choice</h3>
-            <p>No account to create. The audio you make stays on your Mac until you export it. Need to go fully offline? Use the voices built into macOS.</p>
+            <p>No extra sign-up — your Setapp account covers it. The audio you make stays on your Mac until you export it. Need to go fully offline? Use the voices built into macOS.</p>
             <p class="card__foot">Anonymous analytics · off with one switch</p>
           </article>
           <article class="card reveal">
@@ -294,10 +292,10 @@
               <h3 class="h2" id="ch3">Paste it, say it, or drop the file.</h3>
               <p class="lead">Bring a chapter, a report or an email. Vexel opens seven document formats, notices the language on its own, and highlights each word as it's read.</p>
               <ul class="checks" role="list">
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Reads seven formats — drop any of them in<ul class="files" role="list" aria-label="Supported formats: PDF, EPUB, DOCX, Markdown, RTF, RTFD and TXT"><li class="file" style="--c:#FF4D5E"><span>PDF</span></li><li class="file" style="--c:#3CC6B0"><span>EPUB</span></li><li class="file" style="--c:#6F8CFF"><span>DOCX</span></li><li class="file" style="--c:#C9CBD3"><span>MD</span></li><li class="file" style="--c:#F5A524"><span>RTF</span></li><li class="file" style="--c:#F5A524"><span>RTFD</span></li><li class="file" style="--c:#C9CBD3"><span>TXT</span></li></ul></span></li>
                 <li><svg aria-hidden="true"><use href="#i-check"/></svg>Dictate straight into the input</li>
                 <li><svg aria-hidden="true"><use href="#i-check"/></svg>A gentle hint flags hashtags and symbols that would sound odd</li>
               </ul>
-              <ul class="files" role="list" aria-label="Supported formats: PDF, EPUB, DOCX, Markdown, RTF, RTFD and TXT"><li class="file" style="--c:#FF4D5E"><span>PDF</span></li><li class="file" style="--c:#3CC6B0"><span>EPUB</span></li><li class="file" style="--c:#6F8CFF"><span>DOCX</span></li><li class="file" style="--c:#C9CBD3"><span>MD</span></li><li class="file" style="--c:#F5A524"><span>RTF</span></li><li class="file" style="--c:#F5A524"><span>RTFD</span></li><li class="file" style="--c:#C9CBD3"><span>TXT</span></li></ul>
               <p class="detail"><kbd>⌘</kbd><kbd>⌥</kbd><kbd>⇧</kbd><kbd>V</kbd> <b>pastes clean text</b>, without formatting</p>
             </div>
             <div class="stage stage--shot reveal">
@@ -357,6 +355,29 @@
               <!-- TODO(copy): confirm example ids/flags with the CLI docs before launch -->
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESPEECHER ============ -->
+    <!-- TODO(copy): claims taken from respeecher.com (2026-09-30); confirm wording and name usage with Respeecher before launch -->
+    <section class="section section--band" id="respeecher" aria-labelledby="rsp-title">
+      <div class="container rsp">
+        <div class="reveal">
+          <p class="eyebrow">Voices powered by</p>
+          <img class="rsp__logo" src="assets/img/logos/respeecher.svg" alt="Respeecher" width="178" height="40" loading="lazy">
+          <h2 class="h2" id="rsp-title">Hollywood-grade voices, on your Mac.</h2>
+          <p class="lead rsp__lead">Vexel's Hi-Fi cloud voices come from Respeecher, the voice technology team trusted by major film, TV and game studios. The same attention to timing, tone and emotion now goes into every line you make.</p>
+          <ul class="rsp__work" role="list" aria-label="Respeecher's work includes">
+            <li>The Mandalorian</li><li>Cyberpunk 2077: Phantom Liberty</li><li>Endurance, National Geographic</li><li>The Brutalist</li>
+          </ul>
+        </div>
+        <div class="rsp__grid">
+          <article class="rsp__card reveal"><div class="card__icon"><svg aria-hidden="true"><use href="#i-film"/></svg></div><h3>Trusted by studios</h3><p>Lucasfilm, Sony Pictures Television, Blumhouse and CD PROJEKT RED have used Respeecher's voice technology.</p></article>
+          <article class="rsp__card reveal"><div class="card__icon"><svg aria-hidden="true"><use href="#i-award"/></svg></div><h3>Award-recognized</h3><p>Respeecher's work has been recognized at the Emmys, the Webby Awards and the Clio Awards.</p></article>
+          <article class="rsp__card reveal"><div class="card__icon"><svg aria-hidden="true"><use href="#i-wave"/></svg></div><h3>Made by sound people</h3><p>Built by audio professionals who care about intonation, pitch and accent, so voices sound human instead of synthetic.</p></article>
+          <article class="rsp__card reveal"><div class="card__icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></div><h3>Ethical by design</h3><p>Strict consent for every voice, clear voice origins and SOC-certified security.</p></article>
+          <div class="rsp__why reveal"><b>Why it matters for you</b><p>Your audiobook chapter, podcast or voiceover gets the kind of natural delivery listeners expect from a studio — without booking one.</p></div>
         </div>
       </div>
     </section>
@@ -624,7 +645,7 @@
             </thead>
             <tbody>
               <tr><th scope="row">Voices to choose from</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Varies by plan</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>240+ in one list</span></td></tr>
-              <tr><th scope="row">Create an account</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Usually required</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>Not needed</span></td></tr>
+              <tr><th scope="row">Sign-ups needed</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>A new account per tool</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>Your Setapp one</span></td></tr>
               <tr><th scope="row">Work offline</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>No</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>With Mac voices</span></td></tr>
               <tr><th scope="row">Open PDF, EPUB, DOCX</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Often limited</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>7 formats</span></td></tr>
               <tr><th scope="row">Keep every take</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Varies</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>Per project</span></td></tr>
@@ -675,6 +696,7 @@
         <div class="section-head">
           <p class="eyebrow">Get Vexel</p>
           <h2 class="h2" id="get-title">Included with Setapp.</h2>
+          <p class="specs"><span class="sr-only">Requirements: </span><span>macOS 15 Sequoia or later</span> <i>·</i> <span>Apple Silicon (M1 or newer)</span> <i>·</i> <span>Internet for Hi-Fi voices &amp; AI scripts</span> <i>·</i> <span>Exports WAV</span> <i>·</i> <span>v1.5.0, 27 MB</span></p>
         </div>
         <div class="get">
           <div class="get-card reveal">
@@ -691,19 +713,42 @@
             </ul>
             <div class="get-card__cta">
               <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Try free with Setapp <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-              <small>Price: TODO(copy)</small>
+              <small>Uses Setapp AI credits, included in Setapp plans.<br>Top up anytime.</small>
             </div>
           </div>
-          <div class="reqs reveal">
-            <h3 class="h3">Requirements</h3>
-            <dl>
-              <div><dt>macOS</dt><dd>15 Sequoia or later</dd></div>
-              <div><dt>Mac</dt><dd>Apple Silicon (M1 or newer)</dd></div>
-              <div><dt>Internet</dt><dd>For Hi-Fi voices and AI scripts</dd></div>
-              <div><dt>Export</dt><dd>WAV audio</dd></div>
-              <div><dt>Version</dt><dd>1.5.0 · 27 MB</dd></div>
-            </dl>
+          <div class="credits reveal" aria-labelledby="credits-title">
+            <h3 class="h3" id="credits-title">How Setapp AI credits work</h3>
+            <p class="credits__lead">Vexel's cloud voices and AI scripts run on Setapp AI credits. They pay for the powerful servers behind them — so you get natural voices and finished scripts in seconds.</p>
+            <div class="credits__grid">
+              <div><h4>One balance for Setapp</h4><p>The same credits work across all your Setapp apps.</p></div>
+              <div><h4>Pay only for cloud work</h4><p>Mac voices never use credits. Hi-Fi voices and AI scripts do.</p></div>
+              <div><h4>Always in view</h4><p>Your balance sits in Vexel's sidebar, so there are no surprises.</p></div>
+              <div><h4>Top up in a click</h4><p>Running low? Add more credits right from the app.</p></div>
+            </div>
+            <div class="credits__widget" aria-hidden="true"><span><b>28 993</b> AI credits</span><span class="credits__topup">Top up</span></div>
           </div>
+        </div>
+
+        <div class="trial reveal" aria-labelledby="trial-title">
+          <div class="trial__head">
+            <h3 class="h2" id="trial-title">Try free goes through <span class="accent">Setapp</span></h3>
+            <p class="lead">Setapp is MacPaw's app subscription: a big library of Mac apps under one account — Vexel included. Getting started takes three steps.</p>
+          </div>
+          <ol class="trial__steps" role="list">
+            <li class="tstep">
+              <div class="tstep__vis" aria-hidden="true"><div class="tmini tmini--signin"><img class="mini-setapp-logo" src="assets/img/logos/setapp.svg" alt="" width="72" height="20"><b>Sign in to Setapp</b><span class="tfield">you@example.com</span><span class="tbtn">Continue</span></div></div>
+              <span class="tstep__n">1</span><h4>Create a Setapp account</h4><p>That's where the Try free button takes you. It takes about a minute.</p>
+            </li>
+            <li class="tstep">
+              <div class="tstep__vis" aria-hidden="true"><div class="tmini tmini--app"><div class="tmini__bar"><i></i><i></i><i></i><img class="mini-setapp-logo" src="assets/img/logos/setapp.svg" alt="" width="72" height="20"></div><div class="tmini__grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div></div>
+              <span class="tstep__n">2</span><h4>Install Setapp on your Mac</h4><p>One small app that installs and updates everything else.</p>
+            </li>
+            <li class="tstep">
+              <div class="tstep__vis" aria-hidden="true"><div class="tmini tmini--vexel"><img src="assets/img/app-icon-128.webp" alt="" width="44" height="44" loading="lazy"><div><b>Vexel</b><small>by MacPaw</small></div><span class="tbtn">Open</span></div></div>
+              <span class="tstep__n">3</span><h4>Open Vexel</h4><p>It's in your Setapp library, and the same account holds your AI credits.</p>
+            </li>
+          </ol>
+          <p class="trial__foot">Already on Setapp? Search for Vexel in the Setapp app, or open <a href="https://setapp.com/apps/vexel">its Setapp page</a>. <a href="https://setapp.com">More about Setapp</a>.</p>
         </div>
       </div>
     </section>
@@ -723,7 +768,7 @@
           <details><summary>What can I import?<span class="plus" aria-hidden="true"></span></summary><div><p>PDF, EPUB, DOCX, Markdown, RTF, RTFD and TXT. You can also paste text or dictate it.</p></div></details>
           <details><summary>What can I export?<span class="plus" aria-hidden="true"></span></summary><div><p>WAV audio — a single voice, or a full multi-host episode in one file.</p></div></details>
           <details><summary>Which languages are supported?<span class="plus" aria-hidden="true"></span></summary><div><p>69 Hi-Fi cloud voices in five languages: English (25, with several accents), German (19), Ukrainian (13), Arabic (6) and Brazilian Portuguese (6). On top of that, Vexel can use the 170+ free voices built into macOS, in 38 languages.</p><p>The app itself is available in English, German, Spanish, French, Portuguese, Ukrainian, Japanese and Arabic.</p></div></details>
-          <details><summary>Do I need an account? What happens to my text?<span class="plus" aria-hidden="true"></span></summary><div><p>There's no Vexel account. Audio you make is stored on your Mac and only leaves when you export it.</p><p>When you use a cloud voice, the text is sent securely to be voiced. Analytics are anonymous, never include your text or audio, and can be turned off in Settings.</p></div></details>
+          <details><summary>Which account do I need? What happens to my text?<span class="plus" aria-hidden="true"></span></summary><div><p>You only need your Setapp account — Vexel has no separate sign-up. Audio you make is stored on your Mac and only leaves when you export it.</p><p>When you use a cloud voice, the text is sent securely to be voiced. Analytics are anonymous, never include your text or audio, and can be turned off in Settings.</p></div></details>
           <details><summary>Which Macs are supported?<span class="plus" aria-hidden="true"></span></summary><div><p>Macs with Apple Silicon (M1 or newer) running macOS 15 Sequoia or later.</p></div></details>
         </div>
       </div>
@@ -746,7 +791,7 @@
           <li><svg aria-hidden="true"><use href="#i-doc"/></svg>7 document formats</li>
           <li><svg aria-hidden="true"><use href="#i-lock"/></svg>Audio stays on your Mac</li>
           <li><svg aria-hidden="true"><use href="#i-laptop"/></svg>Free Mac voices</li>
-          <li><svg aria-hidden="true"><use href="#i-user-off"/></svg>No Vexel account</li>
+          <li><svg aria-hidden="true"><use href="#i-user-off"/></svg>One Setapp account</li>
         </ul>
         <figure class="peek reveal"><img class="" src="assets/shots/empty-state-1200.webp" srcset="assets/shots/empty-state-1200.webp 1200w, assets/shots/empty-state-1800.webp 1800w" sizes="(min-width: 1280px) 1000px, 92vw" width="2560" height="1760" alt="The Vexel start screen asking “What are we making?” with Read it back and Make a podcast" loading="lazy" decoding="async"></figure>
       </div>

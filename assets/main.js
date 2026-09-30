@@ -131,6 +131,23 @@
     });
   }
 
+  /* ---------- Hero hint lines: one light travelling along each line ---------- */
+  const sizePulses = () => {
+    document.querySelectorAll('.hint-lines .hl-pulse').forEach(path => {
+      const m = path.getScreenCTM(); if (!m) return;
+      const total = path.getTotalLength(); let len = 0, prev = null;
+      for (let i = 0; i <= 40; i++) {
+        const pt = path.getPointAtLength(total * i / 40).matrixTransform(m);
+        if (prev) len += Math.hypot(pt.x - prev.x, pt.y - prev.y);
+        prev = pt;
+      }
+      path.style.setProperty('--len', Math.max(1, Math.round(len)) + 'px');
+    });
+  };
+  sizePulses();
+  window.addEventListener('resize', sizePulses, { passive: true });
+  setTimeout(sizePulses, 1600);
+
   /* ---------- Gentle motion ---------- */
   const calm = reduceMotion();
 
