@@ -1255,3 +1255,4 @@ body.menu-open { overflow: hidden; }
 .js .chapter__num { clip-path: inset(-40% 100% -40% -40%); }
 .js .chapter.is-drawn .chapter__num { clip-path: inset(-40% -40% -40% -40%); transition: clip-path 1.4s var(--ease), color 1.2s var(--ease) 1s, filter 1.2s var(--ease); }
 .chapter.is-active .chapter__num { text-shadow: none; filter: drop-shadow(0 0 16px rgba(255,0,170,.6)); }
+.trial__head { max-width: 980px; } .trial__head .lead { max-width: 760px; }
