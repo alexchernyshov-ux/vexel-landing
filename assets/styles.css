@@ -836,3 +836,22 @@ body.menu-open { overflow: hidden; }
 .steps__chips { margin-top: var(--s-6); }
 .steps__cta { display: flex; justify-content: center; margin-top: var(--s-5); }
 @media (max-width: 559.98px) { .steps__cta .btn { width: 100%; } }
+
+/* Partner logos (white SVGs) */
+.trust-strip .logo { height: 34px; width: auto; opacity: .92; }
+.trust-strip li { gap: 6px; }
+:root[data-theme="light"] .trust-strip .logo { filter: invert(1); }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .trust-strip .logo { filter: invert(1); } }
+
+/* 04: clean, masked shots — tune panel sits beside the takes, trim strip below */
+.stage--pair .shot { background: transparent; }
+.stage--pair .shot img { border-radius: 16px; }
+.stage--pair { grid-template-columns: 1fr 30%; }
+.stage--pair .shot--side { margin-left: -14%; align-self: start; margin-top: 4%; }
+.stage--pair .shot--strip { width: 90%; margin-top: -4%; justify-self: start; }
+
+/* Final CTA peek: 30% smaller, fades out earlier */
+.peek { max-width: 700px; }
+.peek img { -webkit-mask-image: linear-gradient(#000 28%, transparent 78%); mask-image: linear-gradient(#000 28%, transparent 78%); }
+.peek { aspect-ratio: 1.8; overflow: hidden; -webkit-mask-image: linear-gradient(#000 35%, transparent 96%); mask-image: linear-gradient(#000 35%, transparent 96%); }
+.peek img { -webkit-mask-image: none; mask-image: none; }
