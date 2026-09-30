@@ -11,11 +11,22 @@ python3 -m http.server 4173
 Then open http://127.0.0.1:4173
 
 ## Files
-- `index.html` — the page. Sections run in this order: nav, hero, trust strip, why, story 01–05, demo, how it works, comparison, stories, get Vexel, made for Mac, FAQ, final CTA, footer.
+- `index.html` — the page. Sections run in this order: nav, hero, trust strip, why, story 01–05, demo, how it works, comparison, stories, get Vexel, FAQ, final CTA, footer.
 - `assets/styles.css` — the design tokens (`:root`), dark and light themes, components and sections.
 - `assets/main.js` — the theme toggle, mobile menu, scroll reveal, demo player, voice tabs and EN/AR preview.
 - `assets/fonts/` — Bricolage Grotesque, subset to Latin as woff2 (taken from the app's DesignSystem).
 - `assets/img/` — the app icon, favicons and the Open Graph image.
+- `assets/shots/` — real app screenshots as WebP (several sizes each).
+- `raw/` — the original full-size PNG captures (not committed).
+
+## Versions
+- `v1-mockups` (tag) — first version, with the app drawn in HTML/CSS.
+- `iteration-2-real-screenshots` (branch) — real screenshots, gentle motion, no "Made for Mac" section.
+
+To go back to v1: `git switch master`. To keep iteration 2: `git switch master && git merge iteration-2-real-screenshots`.
+
+## Screenshots
+Captured from a Debug build running with its own empty data folder (`CFFIXED_USER_HOME`), so real projects were not touched. Demo content: the podcast "Small Wonders — Ep. 12" (pasted script, 3 hosts) and "The Quiet Harbor — Ch. 1" (3 cloud takes). The takes used 15 AI+ credits.
 
 ## Before launch (TODOs)
 Search the code for `TODO` to find each spot.
@@ -23,9 +34,9 @@ Search the code for `TODO` to find each spot.
 - **Price:** add it to the Get Vexel card.
 - **Testimonials:** replace the 3 placeholder story cards with real, approved quotes and metrics.
 - **Rating:** add a rating badge in the hero only once there is a real rating.
-- **Voice names:** the demo and mockup use made-up names (Noor, Sam, Jo, Arlo). Swap in names from the real catalog.
+- **Demo voice names:** the interactive demo still uses made-up names (Noor, Sam, Jo). The screenshots use real catalog voices.
 - **Demo audio:** it's visual only for now. Add real sample clips per voice.
-- **Screenshots:** the app windows are HTML mockups. Replace them with real screenshots if wanted.
+- **Screenshot text:** the podcast in the screenshots says "Built in 1932" and "forty thousand cars a day" — this is invented demo content, not a claim.
 - **Logos:** MacPaw, Respeecher and Setapp appear as text. Swap in the official logos once brand usage is approved.
 - **Links:** fill in the support email, Help center, Contact, Privacy, Terms and social links.
 - **CLI example:** check the `vexel generate` flags and ids in section 05 against the CLI docs.

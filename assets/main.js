@@ -193,17 +193,43 @@
     });
   }
 
-  /* ---------- EN / AR direction demo (strings from the app's own localization) ---------- */
-  const strings = {
-    en: { newProject: 'New project', voiceovers: 'Voiceovers', readItBack: 'Read it back', podcasts: 'Podcasts', makePodcast: 'Make a podcast', title: 'What are we making?', search: 'Search voices…', generateAll: 'Generate all' },
-    ar: { newProject: 'مشروع جديد', voiceovers: 'تعليقات صوتية', readItBack: 'قراءة صوتية', podcasts: 'بودكاست', makePodcast: 'إنشاء بودكاست', title: 'ما الذي سننشئه؟', search: 'البحث في الأصوات…', generateAll: 'توليد الكل' }
-  };
-  const rtlPanel = document.querySelector('[data-rtl-panel]');
-  const dirBtns = [...document.querySelectorAll('[data-dir]')];
-  dirBtns.forEach(btn => btn.addEventListener('click', () => {
-    const dir = btn.dataset.dir; const lang = dir === 'rtl' ? 'ar' : 'en';
-    dirBtns.forEach(b => { const on = b === btn; b.setAttribute('aria-pressed', String(on)); });
-    rtlPanel.setAttribute('dir', dir); rtlPanel.setAttribute('lang', lang);
-    rtlPanel.querySelectorAll('[data-t]').forEach(el => { el.textContent = strings[lang][el.dataset.t]; });
-  }));
+  /* ---------- Gentle motion ---------- */
+  const calm = reduceMotion();
+
+  // Hero screenshot: starts slightly tilted back, settles flat as you scroll
+  const heroImg = document.querySelector('.hero-shot__img');
+  if (heroImg && !calm) {
+    let ticking = false;
+    const tilt = () => {
+      const p = Math.min(1, Math.max(0, window.scrollY / (window.innerHeight * 0.55)));
+      heroImg.style.setProperty('--tilt', (9 * (1 - p)).toFixed(2) + 'deg');
+      heroImg.style.setProperty('--tilt-scale', (0.97 + 0.03 * p).toFixed(4));
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(tilt); } }, { passive: true });
+    tilt();
+  }
+
+  // Orb follows the pointer a little
+  const orb = document.querySelector('.hero__visual .orb');
+  if (orb && !calm && window.matchMedia('(pointer: fine)').matches) {
+    window.addEventListener('pointermove', e => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 40;
+      const y = (e.clientY / window.innerHeight - 0.5) * 24;
+      orb.style.setProperty('--ox', x.toFixed(1) + 'px');
+      orb.style.setProperty('--oy', y.toFixed(1) + 'px');
+    }, { passive: true });
+  }
+
+  // Chapter numbers light up; eyebrow lines draw in
+  if ('IntersectionObserver' in window) {
+    const active = new IntersectionObserver(entries => {
+      entries.forEach(en => en.target.classList.toggle('is-active', en.isIntersecting));
+    }, { rootMargin: '-35% 0px -35% 0px' });
+    document.querySelectorAll('.chapter').forEach(el => active.observe(el));
+    const heads = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('is-in'); heads.unobserve(en.target); } });
+    }, { threshold: .3 });
+    document.querySelectorAll('.section-head').forEach(el => heads.observe(el));
+  }
 })();
