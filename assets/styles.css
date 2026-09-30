@@ -1194,3 +1194,20 @@ body.menu-open { overflow: hidden; }
 .rsp-sec { overflow: visible; }
 .rsp-waves { border-radius: 32px; }
 .rsp-card { background: radial-gradient(60% 80% at 100% 0%, rgba(139,92,246,.22), transparent 60%), radial-gradient(50% 70% at 0% 100%, rgba(192,132,252,.12), transparent 60%), linear-gradient(var(--surface-1), var(--surface-1)), var(--bg); }
+
+/* ---------- Hero: Vexel pulse behind the screenshot, rings travel far above it ---------- */
+.hero-pulse { position: absolute; left: 50%; top: 22%; width: 0; height: 0; z-index: 0; pointer-events: none; }
+.hero-pulse b { position: absolute; left: -340px; top: -340px; width: 680px; height: 680px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255,120,210,.45), rgba(255,0,170,.22) 40%, rgba(154,91,255,.10) 65%, transparent 100%); filter: blur(20px);
+  animation: pulse-core 4.8s var(--ease) infinite; }
+.hero-pulse i { position: absolute; left: -800px; top: -800px; width: 1600px; height: 1600px; border-radius: 50%;
+  border: 1.5px solid rgba(255,110,205,.55); box-shadow: 0 0 40px rgba(255,0,170,.25), inset 0 0 40px rgba(255,0,170,.12);
+  transform: scale(.12); opacity: 0; animation: pulse-ring 7.2s cubic-bezier(.25,.6,.3,1) infinite; }
+.hero-pulse i:nth-child(2) { animation-delay: -1.8s; }
+.hero-pulse i:nth-child(3) { animation-delay: -3.6s; }
+.hero-pulse i:nth-child(4) { animation-delay: -5.4s; }
+@keyframes pulse-ring { 0% { transform: scale(.12); opacity: 0; } 12% { opacity: .9; } 100% { transform: scale(1); opacity: 0; } }
+@keyframes pulse-core { 0%, 100% { transform: scale(.92); opacity: .75; } 50% { transform: scale(1.05); opacity: 1; } }
+@media (max-width: 767.98px) { .hero-pulse { top: 30%; } .hero-pulse i { left: -520px; top: -520px; width: 1040px; height: 1040px; } .hero-pulse b { left: -220px; top: -220px; width: 440px; height: 440px; } }
+@media (prefers-reduced-motion: reduce) { .hero-pulse i { animation: none; opacity: 0; } .hero-pulse b { animation: none; } }
+.hero__visual .container { position: relative; z-index: 1; }
