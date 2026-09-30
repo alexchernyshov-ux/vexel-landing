@@ -230,3 +230,17 @@
     });
   });
 })();
+
+/* Screenshots: fade in gently when they are both loaded and on screen */
+(() => {
+  const imgs = [...document.querySelectorAll('.shot img, .tstep__vis img, .peek img, .hero-shot__img')];
+  const show = img => { if (img.dataset.seen && img.dataset.ready) setTimeout(() => img.classList.add('is-loaded'), 120); };
+  const ready = img => { img.dataset.ready = '1'; show(img); };
+  imgs.forEach(img => {
+    if (img.complete && img.naturalWidth) ready(img);
+    else { img.addEventListener('load', () => ready(img), { once: true }); img.addEventListener('error', () => ready(img), { once: true }); }
+  });
+  if (!('IntersectionObserver' in window)) { imgs.forEach(i => { i.dataset.seen = '1'; show(i); }); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.dataset.seen = '1'; show(e.target); io.unobserve(e.target); } }), { threshold: .15 });
+  imgs.forEach(i => io.observe(i));
+})();
