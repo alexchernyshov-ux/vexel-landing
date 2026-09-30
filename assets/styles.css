@@ -1248,3 +1248,10 @@ body.menu-open { overflow: hidden; }
 .hero-pulse i { border: 0; box-shadow: none; will-change: transform, opacity; backface-visibility: hidden;
   background: radial-gradient(closest-side, transparent 93.5%, rgba(255,0,170,.10) 96.5%, rgba(255,110,205,.55) 98.6%, rgba(255,0,170,.12) 99.4%, transparent 100%); }
 .hero-pulse.is-paused i, .hero-pulse.is-paused b { animation-play-state: paused; }
+
+/* Chapter numbers, Safari: no text-shadow (Safari paints it as a filled ghost), glow via filter,
+   and a clip-path that reaches past the box so the glow never shows a hard edge */
+.chapter__num { text-shadow: none; filter: drop-shadow(0 0 10px rgba(255,0,170,.35)); transition: color 1.2s var(--ease) .8s, filter 1.2s var(--ease); }
+.js .chapter__num { clip-path: inset(-40% 100% -40% -40%); }
+.js .chapter.is-drawn .chapter__num { clip-path: inset(-40% -40% -40% -40%); transition: clip-path 1.4s var(--ease), color 1.2s var(--ease) 1s, filter 1.2s var(--ease); }
+.chapter.is-active .chapter__num { text-shadow: none; filter: drop-shadow(0 0 16px rgba(255,0,170,.6)); }
