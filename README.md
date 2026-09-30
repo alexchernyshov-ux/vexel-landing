@@ -31,7 +31,7 @@ Captured from a Debug build running with its own empty data folder (`CFFIXED_USE
 ## Before launch (TODOs)
 Search the code for `TODO` to find each spot.
 - **Domain:** set the canonical, `og:url` and `og:image` URLs (currently `https://vexel.app/`).
-- **Price:** add it to the Get Vexel card.
+- **Pricing:** the page says Vexel is free on Setapp with 6,000 bonus AI credits. Membership and top-ups are not described yet.
 - **Testimonials:** replace the 3 placeholder story cards with real, approved quotes and metrics.
 - **Rating:** add a rating badge in the hero only once there is a real rating.
 - **Demo voice names:** the interactive demo still uses made-up names (Noor, Sam, Jo). The screenshots use real catalog voices.
