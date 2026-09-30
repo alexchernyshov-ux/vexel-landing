@@ -591,7 +591,7 @@ body.menu-open { overflow: hidden; }
 /* ---------- Footer ---------- */
 .footer { border-top: 1px solid var(--line-1); padding-block: clamp(48px, 6vw, 80px) 32px; font-size: var(--fs-sm); }
 .footer__grid { display: grid; gap: var(--s-6); grid-template-columns: 1fr 1fr; }
-@media (min-width: 768px) { .footer__grid { grid-template-columns: 2fr repeat(3, 1fr); } }
+@media (min-width: 768px) { .footer__grid { grid-template-columns: 2fr repeat(2, 1fr); } }
 .footer__brand { grid-column: 1 / -1; }
 @media (min-width: 768px) { .footer__brand { grid-column: auto; } }
 .footer__brand p { color: var(--text-3); margin-top: 12px; max-width: 30ch; }
@@ -855,3 +855,48 @@ body.menu-open { overflow: hidden; }
 .peek img { -webkit-mask-image: linear-gradient(#000 28%, transparent 78%); mask-image: linear-gradient(#000 28%, transparent 78%); }
 .peek { aspect-ratio: 1.8; overflow: hidden; -webkit-mask-image: linear-gradient(#000 35%, transparent 96%); mask-image: linear-gradient(#000 35%, transparent 96%); }
 .peek img { -webkit-mask-image: none; mask-image: none; }
+
+/* ---------- Get card: softer, stretched glow; white core sits off the top-right edge ---------- */
+.get-card .orb {
+  --size: 1100px; width: var(--size); aspect-ratio: 1.25; right: -520px; top: -560px; opacity: .9; filter: blur(30px);
+  background: radial-gradient(closest-side, rgba(255,255,255,.9) 0 7%, rgba(255,150,220,.55) 16%, rgba(255,0,170,.34) 34%, rgba(154,91,255,.2) 58%, rgba(154,91,255,0) 100%);
+}
+.get-card .orb::before, .get-card .orb::after { display: none; }
+
+/* Pulsing rings under the icon, like the app's start screen */
+.pulse-icon { position: relative; display: grid; place-items: center; width: 64px; height: 64px; flex: none; }
+.pulse-icon img { position: relative; z-index: 1; }
+.pulse-icon i { position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.35); animation: ring 3.6s var(--ease) infinite; }
+.pulse-icon i:nth-child(2) { animation-delay: -1.2s; }
+.pulse-icon i:nth-child(3) { animation-delay: -2.4s; }
+@keyframes ring { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(2.4); opacity: 0; } }
+.get-card__top { gap: 22px; }
+
+/* ---------- 03: file tiles with the extension printed inside ---------- */
+.files { display: flex; flex-wrap: wrap; gap: 12px; margin-top: var(--s-5); }
+.file {
+  position: relative; width: 50px; height: 62px; border-radius: 7px 16px 7px 7px;
+  background: linear-gradient(170deg, var(--surface-4), var(--surface-2)); border: 1px solid var(--line-2);
+  display: flex; align-items: flex-end; justify-content: center; padding-bottom: 9px;
+  transition: transform .4s var(--ease), border-color .3s var(--ease);
+}
+.file::before { content: ""; position: absolute; top: -1px; right: -1px; width: 16px; height: 16px; border-radius: 0 15px 0 6px; background: var(--line-3); }
+.file::after { content: ""; position: absolute; left: 10px; right: 14px; top: 16px; height: 14px; background: repeating-linear-gradient(var(--line-3) 0 2px, transparent 2px 6px); border-radius: 1px; opacity: .8; }
+.file span { font-size: 10.5px; font-weight: 700; letter-spacing: .04em; padding: 2px 5px; border-radius: 4px; background: var(--c); color: #141416; line-height: 1.2; }
+.file:hover { transform: translateY(-4px) rotate(-2deg); border-color: var(--line-3); }
+
+/* ---------- Final CTA ---------- */
+.final p { max-width: none; }
+@media (min-width: 768px) { .final p { white-space: nowrap; } }
+.final .orb { --size: min(1300px, 160vw); aspect-ratio: 1.9; top: 64%; opacity: .6; }
+.chips--line { max-width: 820px; margin-inline: auto; gap: 6px 22px; }
+.chips--line li { background: none; border: 0; -webkit-backdrop-filter: none; backdrop-filter: none; min-height: 28px; padding: 0; color: var(--text-2); font-size: var(--fs-sm); }
+.chips--line svg { width: 15px; height: 15px; }
+
+/* ---------- Footer legal ---------- */
+.footer__legal { display: flex; gap: 20px; }
+.footer__legal a { color: var(--text-2); min-height: 36px; display: inline-flex; align-items: center; }
+.footer__legal a:hover { color: var(--text-1); }
+@media (prefers-reduced-motion: reduce) { .pulse-icon i { animation: none; opacity: 0; } }
+.get-card .orb { --size: 980px; right: -400px; top: -470px; opacity: 1; }
+.final .orb { top: 55%; aspect-ratio: 2.2; }
