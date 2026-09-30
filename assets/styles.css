@@ -1217,3 +1217,9 @@ body.menu-open { overflow: hidden; }
 .hero-pulse i:nth-child(3) { animation-delay: -5.2s; }
 .hero-pulse i:nth-child(4) { animation-delay: -7.8s; }
 .hero-pulse b { animation-duration: 6.8s; }
+@media (min-width: 768px) {
+  .footer__grid { grid-template-columns: 1fr auto; column-gap: 0; }
+  .footer__cols { display: flex; gap: 48px; }
+  .footer__grid nav { min-width: 140px; }
+}
+@media (max-width: 767.98px) { .footer__cols { display: contents; } }
