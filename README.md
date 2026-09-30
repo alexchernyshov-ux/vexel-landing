@@ -13,7 +13,7 @@ Then open http://127.0.0.1:4173
 ## Files
 - `index.html` — the page. Sections run in this order: nav, hero, trust strip, why, story 01–05, demo, how it works, comparison, stories, get Vexel, FAQ, final CTA, footer.
 - `assets/styles.css` — the design tokens (`:root`), dark and light themes, components and sections.
-- `assets/main.js` — the theme toggle, mobile menu, scroll reveal, demo player, voice tabs and EN/AR preview.
+- `assets/main.js` — the theme toggle, mobile menu, scroll reveal, demo player, voice tabs, hero tilt, orb drift and chapter highlights.
 - `assets/fonts/` — Bricolage Grotesque, subset to Latin as woff2 (taken from the app's DesignSystem).
 - `assets/img/` — the app icon, favicons and the Open Graph image.
 - `assets/shots/` — real app screenshots as WebP (several sizes each).
