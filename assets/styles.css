@@ -1223,3 +1223,28 @@ body.menu-open { overflow: hidden; }
   .footer__grid nav { min-width: 140px; }
 }
 @media (max-width: 767.98px) { .footer__cols { display: contents; } }
+
+/* ---------- Safari fixes ---------- */
+/* hint pills size to their text (Safari shrank them to the zero-width anchor) */
+.hint, .float-pill { width: max-content; max-width: none; }
+
+/* chapter numbers: CSS text outline + reveal wipe (works the same in Safari and Chrome) */
+.chapter__num {
+  display: inline-block; height: auto; width: auto; overflow: visible;
+  font: 600 clamp(4rem, 2.6rem + 4.2vw, 6.5rem)/0.9 var(--font); letter-spacing: -.06em;
+  color: rgba(255,0,170,0); -webkit-text-stroke: 1.6px #FF00AA; paint-order: stroke fill;
+  text-shadow: 0 0 18px rgba(255,0,170,.35);
+  margin-bottom: var(--s-5); padding-right: .08em;
+  transition: color 1.2s var(--ease) .8s, text-shadow 1.2s var(--ease);
+}
+.js .chapter__num { clip-path: inset(0 100% 0 0); }
+.js .chapter.is-drawn .chapter__num { clip-path: inset(0 0 0 0); color: rgba(255,0,170,.07); transition: clip-path 1.4s var(--ease), color 1.2s var(--ease) 1s, text-shadow 1.2s var(--ease); }
+.chapter.is-active .chapter__num { text-shadow: 0 0 24px rgba(255,0,170,.65); }
+@media (prefers-reduced-motion: reduce) { .js .chapter__num { clip-path: none !important; } }
+
+/* ---------- Hero pulse: GPU-only (no blur filters, no animated shadows) ---------- */
+.hero-pulse b { filter: none; will-change: transform, opacity;
+  background: radial-gradient(closest-side, rgba(255,120,210,.40), rgba(255,0,170,.20) 40%, rgba(154,91,255,.08) 68%, transparent 100%); }
+.hero-pulse i { border: 0; box-shadow: none; will-change: transform, opacity; backface-visibility: hidden;
+  background: radial-gradient(closest-side, transparent 93.5%, rgba(255,0,170,.10) 96.5%, rgba(255,110,205,.55) 98.6%, rgba(255,0,170,.12) 99.4%, transparent 100%); }
+.hero-pulse.is-paused i, .hero-pulse.is-paused b { animation-play-state: paused; }

@@ -257,3 +257,9 @@
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.dataset.seen = '1'; show(e.target); io.unobserve(e.target); } }), { threshold: .15 });
   imgs.forEach(i => io.observe(i));
 })();
+
+/* Pause the hero pulse when it is off screen */
+(() => {
+  const pulse = document.querySelector('.hero-pulse'); if (!pulse || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(([e]) => pulse.classList.toggle('is-paused', !e.isIntersecting)).observe(document.querySelector('.hero'));
+})();
