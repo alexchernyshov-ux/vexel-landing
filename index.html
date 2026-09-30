@@ -175,7 +175,7 @@
           <figure class="hero-shot">
             <div class="hero-shot__frame" data-tilt>
               <picture><source media="(max-width: 599.98px)" srcset="assets/shots/hero-podcast-m-720.webp 720w, assets/shots/hero-podcast-m-1080.webp 1080w" sizes="94vw" width="1258" height="1382"><img class="hero-shot__img" src="assets/shots/hero-podcast-1200.webp" srcset="assets/shots/hero-podcast-1200.webp 1200w, assets/shots/hero-podcast-1800.webp 1800w, assets/shots/hero-podcast-2560.webp 2560w" sizes="(min-width: 1536px) 1056px, (min-width: 1280px) 960px, (min-width: 768px) 78vw, 94vw" width="2560" height="1760" alt="Vexel showing the podcast “Small Wonders — Ep. 12”: a nine-line script for three hosts, the cast panel with delivery set to Natural, and a color-coded waveform timeline" fetchpriority="high"></picture>
-              <svg class="hint-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="hl" style="--d:0" d="M9 40.5 C 5.5 46, 12.5 52, 9 58.5" pathLength="100"/><path class="hl-pulse" style="--d:0" d="M9 40.5 C 5.5 46, 12.5 52, 9 58.5" pathLength="100"/><path class="hl" style="--d:1" d="M80.5 23.5 C 81.5 20.5, 83.5 26.5, 84.5 23.5" pathLength="100"/><path class="hl-pulse" style="--d:1" d="M80.5 23.5 C 81.5 20.5, 83.5 26.5, 84.5 23.5" pathLength="100"/><path class="hl" style="--d:2" d="M86 55 C 91 66, 70 64, 72 73 S 64 80.5, 60.5 80.5" pathLength="100"/><path class="hl-pulse" style="--d:2" d="M86 55 C 91 66, 70 64, 72 73 S 64 80.5, 60.5 80.5" pathLength="100"/><path class="hl" style="--d:3" d="M36 95.5 C 33 97.5, 39 99.5, 36 101.5" pathLength="100"/><path class="hl-pulse" style="--d:3" d="M36 95.5 C 33 97.5, 39 99.5, 36 101.5" pathLength="100"/></svg>
+              <svg class="hint-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path class="hl" style="--d:0" d="M9 40.5 C 7.5 46.5, 10.5 52.5, 9 58.5"/><path class="hl-pulse" style="--d:0" d="M9 40.5 C 7.5 46.5, 10.5 52.5, 9 58.5"/><path class="hl" style="--d:1" d="M80.5 23.5 C 81.8 22.3, 83.2 24.7, 84.5 23.5"/><path class="hl-pulse" style="--d:1" d="M80.5 23.5 C 81.8 22.3, 83.2 24.7, 84.5 23.5"/><path class="hl" style="--d:2" d="M86 55 C 86 68, 72 80.5, 60.5 80.5"/><path class="hl-pulse" style="--d:2" d="M86 55 C 86 68, 72 80.5, 60.5 80.5"/><path class="hl" style="--d:3" d="M36 95.5 C 34.8 97.5, 37.2 99.5, 36 101.5"/><path class="hl-pulse" style="--d:3" d="M36 95.5 C 34.8 97.5, 37.2 99.5, 36 101.5"/></svg>
               <i class="hint-dot" style="--x:9%; --y:40.5%; --d:0" aria-hidden="true"></i>
               <i class="hint-dot" style="--x:80.5%; --y:23.5%; --d:1" aria-hidden="true"></i>
               <i class="hint-dot" style="--x:86%; --y:55%; --d:2" aria-hidden="true"></i>
@@ -361,23 +361,36 @@
 
     <!-- ============ RESPEECHER ============ -->
     <!-- TODO(copy): claims taken from respeecher.com (2026-09-30); confirm wording and name usage with Respeecher before launch -->
-    <section class="section section--band" id="respeecher" aria-labelledby="rsp-title">
+    <section class="section rsp-sec" id="respeecher" aria-labelledby="rsp-title">
+      <svg class="rsp-waves" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 220 C 240 120, 480 320, 720 220 S 1200 120, 1440 220"/>
+        <path d="M0 250 C 240 150, 480 350, 720 250 S 1200 150, 1440 250"/>
+        <path d="M0 280 C 240 180, 480 380, 720 280 S 1200 180, 1440 280"/>
+      </svg>
       <div class="container rsp">
         <div class="reveal">
           <p class="eyebrow">Voices powered by</p>
           <img class="rsp__logo" src="assets/img/logos/respeecher.svg" alt="Respeecher" width="178" height="40" loading="lazy">
-          <h2 class="h2" id="rsp-title">Hollywood-grade voices, on your Mac.</h2>
-          <p class="lead rsp__lead">Vexel's Hi-Fi cloud voices come from Respeecher, the voice technology team trusted by major film, TV and game studios. The same attention to timing, tone and emotion now goes into every line you make.</p>
-          <ul class="rsp__work" role="list" aria-label="Respeecher's work includes">
-            <li>The Mandalorian</li><li>Cyberpunk 2077: Phantom Liberty</li><li>Endurance, National Geographic</li><li>The Brutalist</li>
+          <h2 class="h2" id="rsp-title">Hollywood-grade voices, <span class="rsp__grad">on your Mac.</span></h2>
+          <p class="lead rsp__lead">Vexel's Hi-Fi cloud voices come from Respeecher — the voice team behind major film, TV and game projects.</p>
+          <ul class="rsp__facts" role="list">
+            <li><b>Emmy</b><span>recognized</span></li>
+            <li><b>Webby</b><span>&amp; Clio awards</span></li>
+            <li><b>SOC</b><span>certified security</span></li>
           </ul>
         </div>
-        <div class="rsp__grid">
-          <article class="rsp__card reveal"><div class="card__icon"><svg aria-hidden="true"><use href="#i-film"/></svg></div><h3>Trusted by studios</h3><p>Lucasfilm, Sony Pictures Television, Blumhouse and CD PROJEKT RED have used Respeecher's voice technology.</p></article>
-          <article class="rsp__card reveal"><div class="card__icon"><svg aria-hidden="true"><use href="#i-award"/></svg></div><h3>Award-recognized</h3><p>Respeecher's work has been recognized at the Emmys, the Webby Awards and the Clio Awards.</p></article>
-          <article class="rsp__card reveal"><div class="card__icon"><svg aria-hidden="true"><use href="#i-wave"/></svg></div><h3>Made by sound people</h3><p>Built by audio professionals who care about intonation, pitch and accent, so voices sound human instead of synthetic.</p></article>
-          <article class="rsp__card reveal"><div class="card__icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></div><h3>Ethical by design</h3><p>Strict consent for every voice, clear voice origins and SOC-certified security.</p></article>
-          <div class="rsp__why reveal"><b>Why it matters for you</b><p>Your audiobook chapter, podcast or voiceover gets the kind of natural delivery listeners expect from a studio — without booking one.</p></div>
+        <div class="rsp__stage reveal" data-rsp>
+          <div class="rsp__tabs" role="tablist" aria-label="Respeecher projects"><button type="button" role="tab" id="rw-0" aria-selected="true" aria-controls="rw-panel" tabindex="0" data-i="0">The Mandalorian</button><button type="button" role="tab" id="rw-1" aria-selected="false" aria-controls="rw-panel" tabindex="-1" data-i="1">Cyberpunk 2077: Phantom Liberty</button><button type="button" role="tab" id="rw-2" aria-selected="false" aria-controls="rw-panel" tabindex="-1" data-i="2">Endurance</button><button type="button" role="tab" id="rw-3" aria-selected="false" aria-controls="rw-panel" tabindex="-1" data-i="3">The Brutalist</button></div>
+          <div class="rsp__panel" id="rw-panel" role="tabpanel" aria-live="polite">
+            <div class="rsp__eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <p class="rsp__studio" data-studio>Lucasfilm · Disney+</p>
+            <h3 class="rsp__title" data-title>The Mandalorian</h3>
+            <p class="rsp__desc" data-desc>Recreated the voice of young Luke Skywalker.</p>
+          </div>
+          <ul class="rsp__pills" role="list">
+            <li>Built by sound professionals</li><li>Consent for every voice</li><li>Natural timing, tone &amp; emotion</li>
+          </ul>
+          <script type="application/json" data-rsp-data>[["The Mandalorian", "Lucasfilm · Disney+", "Recreated the voice of young Luke Skywalker."], ["Cyberpunk 2077: Phantom Liberty", "CD PROJEKT RED", "Voice work for the game’s expansion."], ["Endurance", "National Geographic", "Recreated a historical voice for the documentary."], ["The Brutalist", "Feature film", "Polished Hungarian-language pronunciation."]]</script>
         </div>
       </div>
     </section>
@@ -713,19 +726,19 @@
             </ul>
             <div class="get-card__cta">
               <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Try free with Setapp <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-              <small>Uses Setapp AI credits, included in Setapp plans.<br>Top up anytime.</small>
+              <small>Uses Setapp AI credits,<br>included in Setapp plans.<br>Top up anytime.</small>
             </div>
           </div>
           <div class="credits reveal" aria-labelledby="credits-title">
-            <h3 class="h3" id="credits-title">How Setapp AI credits work</h3>
-            <p class="credits__lead">Vexel's cloud voices and AI scripts run on Setapp AI credits. They pay for the powerful servers behind them — so you get natural voices and finished scripts in seconds.</p>
-            <div class="credits__grid">
-              <div><h4>One balance for Setapp</h4><p>The same credits work across all your Setapp apps.</p></div>
-              <div><h4>Pay only for cloud work</h4><p>Mac voices never use credits. Hi-Fi voices and AI scripts do.</p></div>
-              <div><h4>Always in view</h4><p>Your balance sits in Vexel's sidebar, so there are no surprises.</p></div>
-              <div><h4>Top up in a click</h4><p>Running low? Add more credits right from the app.</p></div>
-            </div>
-            <div class="credits__widget" aria-hidden="true"><span><b>28 993</b> AI credits</span><span class="credits__topup">Top up</span></div>
+            <div class="credits__bolt" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13.5 2 4 14h7l-1.5 8L20 10h-7z"/></svg></div>
+            <h3 class="h3" id="credits-title">Runs on Setapp AI credits</h3>
+            <p class="credits__lead">They power the servers behind Hi-Fi voices and AI scripts — so results come fast and sound great.</p>
+            <ul class="credits__grid" role="list">
+              <li><svg aria-hidden="true"><use href="#i-sliders"/></svg><b>One balance</b><span>for every Setapp app</span></li>
+              <li><svg aria-hidden="true"><use href="#i-laptop"/></svg><b>Mac voices</b><span>never use credits</span></li>
+              <li><svg aria-hidden="true"><use href="#i-search"/></svg><b>Always visible</b><span>in Vexel's sidebar</span></li>
+              <li><svg aria-hidden="true"><use href="#i-plus"/></svg><b>Top up</b><span>in one click</span></li>
+            </ul>
           </div>
         </div>
 
@@ -736,15 +749,15 @@
           </div>
           <ol class="trial__steps" role="list">
             <li class="tstep">
-              <div class="tstep__vis" aria-hidden="true"><div class="tmini tmini--signin"><img class="mini-setapp-logo" src="assets/img/logos/setapp.svg" alt="" width="72" height="20"><b>Sign in to Setapp</b><span class="tfield">you@example.com</span><span class="tbtn">Continue</span></div></div>
+              <div class="tstep__vis"><img src="assets/shots/setapp-signin-640.webp" srcset="assets/shots/setapp-signin-640.webp 640w, assets/shots/setapp-signin-1200.webp 1200w" sizes="(min-width: 768px) 30vw, 92vw" alt="Setapp sign-in page with Vexel shown as free to install" loading="lazy" decoding="async"></div>
               <span class="tstep__n">1</span><h4>Create a Setapp account</h4><p>That's where the Try free button takes you. It takes about a minute.</p>
             </li>
             <li class="tstep">
-              <div class="tstep__vis" aria-hidden="true"><div class="tmini tmini--app"><div class="tmini__bar"><i></i><i></i><i></i><img class="mini-setapp-logo" src="assets/img/logos/setapp.svg" alt="" width="72" height="20"></div><div class="tmini__grid"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div></div>
+              <div class="tstep__vis"><img src="assets/shots/setapp-app-640.webp" srcset="assets/shots/setapp-app-640.webp 640w, assets/shots/setapp-app-1200.webp 1200w" sizes="(min-width: 768px) 30vw, 92vw" alt="The Setapp app on a Mac, showing the app library" loading="lazy" decoding="async"></div>
               <span class="tstep__n">2</span><h4>Install Setapp on your Mac</h4><p>One small app that installs and updates everything else.</p>
             </li>
             <li class="tstep">
-              <div class="tstep__vis" aria-hidden="true"><div class="tmini tmini--vexel"><img src="assets/img/app-icon-128.webp" alt="" width="44" height="44" loading="lazy"><div><b>Vexel</b><small>by MacPaw</small></div><span class="tbtn">Open</span></div></div>
+              <div class="tstep__vis"><img src="assets/shots/setapp-vexel-640.webp" srcset="assets/shots/setapp-vexel-640.webp 640w, assets/shots/setapp-vexel-1200.webp 1200w" sizes="(min-width: 768px) 30vw, 92vw" alt="Vexel’s page inside the Setapp app with the Open button" loading="lazy" decoding="async"></div>
               <span class="tstep__n">3</span><h4>Open Vexel</h4><p>It's in your Setapp library, and the same account holds your AI credits.</p>
             </li>
           </ol>
@@ -785,13 +798,11 @@
           <a class="btn btn--ghost btn--lg" href="#demo"><svg aria-hidden="true"><use href="#i-play"/></svg> Hear the voices</a>
         </div>
         <ul class="chips chips--line" role="list">
-          <li><svg aria-hidden="true"><use href="#i-podcast"/></svg>Podcasts with several hosts</li>
           <li><svg aria-hidden="true"><use href="#i-wave"/></svg>240+ voices</li>
           <li><svg aria-hidden="true"><use href="#i-globe"/></svg>5 cloud languages</li>
-          <li><svg aria-hidden="true"><use href="#i-doc"/></svg>7 document formats</li>
-          <li><svg aria-hidden="true"><use href="#i-lock"/></svg>Audio stays on your Mac</li>
+          <li><svg aria-hidden="true"><use href="#i-podcast"/></svg>Podcasts with several hosts</li>
           <li><svg aria-hidden="true"><use href="#i-laptop"/></svg>Free Mac voices</li>
-          <li><svg aria-hidden="true"><use href="#i-user-off"/></svg>One Setapp account</li>
+          <li><svg aria-hidden="true"><use href="#i-lock"/></svg>Audio stays on your Mac</li>
         </ul>
         <figure class="peek reveal"><img class="" src="assets/shots/empty-state-1200.webp" srcset="assets/shots/empty-state-1200.webp 1200w, assets/shots/empty-state-1800.webp 1800w" sizes="(min-width: 1280px) 1000px, 92vw" width="2560" height="1760" alt="The Vexel start screen asking “What are we making?” with Read it back and Make a podcast" loading="lazy" decoding="async"></figure>
       </div>

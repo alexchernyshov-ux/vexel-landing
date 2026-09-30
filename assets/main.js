@@ -208,3 +208,25 @@
     document.querySelectorAll('.section-head').forEach(el => heads.observe(el));
   }
 })();
+
+/* Respeecher project spotlight */
+(() => {
+  const box = document.querySelector('[data-rsp]'); if (!box) return;
+  let data = []; try { data = JSON.parse(box.querySelector('[data-rsp-data]').textContent); } catch (e) { return; }
+  const tabs = [...box.querySelectorAll('[role="tab"]')];
+  const panel = box.querySelector('.rsp__panel');
+  const set = i => {
+    tabs.forEach((t, k) => { t.setAttribute('aria-selected', String(k === i)); t.tabIndex = k === i ? 0 : -1; });
+    panel.classList.remove('is-swap'); void panel.offsetWidth; panel.classList.add('is-swap');
+    box.querySelector('[data-title]').textContent = data[i][0];
+    box.querySelector('[data-studio]').textContent = data[i][1];
+    box.querySelector('[data-desc]').textContent = data[i][2];
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => set(i));
+    t.addEventListener('keydown', e => {
+      const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key]; if (!d) return;
+      e.preventDefault(); const n = (i + d + tabs.length) % tabs.length; tabs[n].focus(); set(n);
+    });
+  });
+})();
