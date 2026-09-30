@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Vexel — Any text. Any voice. Text-to-speech for Mac</title>
+  <meta name="description" content="Vexel turns articles, documents and ideas into natural speech — or a full podcast with several AI hosts. A native Mac app by MacPaw, with voices by Respeecher. On Setapp.">
+  <link rel="canonical" href="https://vexel.app/"><!-- TODO(copy): final domain -->
+  <meta name="theme-color" content="#121214" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#F6F5F7" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Vexel">
+  <meta property="og:title" content="Vexel — Any text. Any voice.">
+  <meta property="og:description" content="Turn reading into listening. Natural speech and multi-host podcasts from any text, right on your Mac.">
+  <meta property="og:url" content="https://vexel.app/">
+  <meta property="og:image" content="https://vexel.app/assets/img/og.png"><!-- TODO(copy): absolute URL on final domain -->
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Vexel app icon beside the headline Any text. Any voice.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vexel — Any text. Any voice.">
+  <meta name="twitter:description" content="Turn reading into listening. Natural speech and multi-host podcasts from any text, right on your Mac.">
+  <meta name="twitter:image" content="https://vexel.app/assets/img/og.png">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preload" href="assets/fonts/bricolage-semibold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/bricolage-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script>
+    // Theme + js flag before paint (no flash). Storage may be blocked — fail quietly.
+    (function () {
+      var d = document.documentElement; d.classList.add('js');
+      try { var t = localStorage.getItem('vexel-theme'); if (t === 'light' || t === 'dark') d.setAttribute('data-theme', t); } catch (e) {}
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Vexel",
+    "applicationCategory": "MultimediaApplication",
+    "applicationSubCategory": "Text to speech",
+    "operatingSystem": "macOS 15 or later (Apple Silicon)",
+    "softwareVersion": "1.5.0",
+    "fileSize": "27MB",
+    "description": "A native Mac app that turns any text, document or topic into natural speech, including podcast-style audio with several AI hosts.",
+    "url": "https://vexel.app/",
+    "downloadUrl": "https://setapp.com/apps/vexel",
+    "image": "https://vexel.app/assets/img/app-icon-512.png",
+    "inLanguage": ["en", "de", "es", "fr", "pt-BR", "uk", "ja", "ar"],
+    "publisher": { "@type": "Organization", "name": "MacPaw" }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-check" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".35"/><path d="M6.4 10.3l2.4 2.4 4.8-5.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-minus" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.25" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".5"/><path d="M6.5 10h7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+      <symbol id="i-play" viewBox="0 0 20 20"><path d="M6 4.2v11.6a.8.8 0 0 0 1.2.7l9.3-5.8a.8.8 0 0 0 0-1.4L7.2 3.5A.8.8 0 0 0 6 4.2z" fill="currentColor"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 20 20"><rect x="5" y="4" width="3.6" height="12" rx="1" fill="currentColor"/><rect x="11.4" y="4" width="3.6" height="12" rx="1" fill="currentColor"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 20 20"><path d="M4 10h11m-4.5-5L15 10l-4.5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-spark" viewBox="0 0 20 20"><path d="M10 2.5l1.6 4.4 4.4 1.6-4.4 1.6L10 14.5l-1.6-4.4L4 8.5l4.4-1.6L10 2.5zM15.5 13l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7.7-1.8z" fill="currentColor"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 20 20"><rect x="4" y="8.5" width="12" height="8.5" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M6.8 8.5V6.3a3.2 3.2 0 0 1 6.4 0v2.2" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+      <symbol id="i-chip" viewBox="0 0 20 20"><rect x="5" y="5" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><rect x="8" y="8" width="4" height="4" rx=".8" fill="currentColor"/><path d="M8 2.5V5m4-2.5V5M8 15v2.5m4-2.5v2.5M2.5 8H5m-2.5 4H5M15 8h2.5M15 12h2.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+      <symbol id="i-user-off" viewBox="0 0 20 20"><circle cx="10" cy="7" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.8 16.5a6.3 6.3 0 0 1 12.4 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3 3l14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+      <symbol id="i-wave" viewBox="0 0 20 20"><path d="M3 9v2M6 6v8M9 3.5v13M12 7v6M15 5v10M18 8.5v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+      <symbol id="i-doc" viewBox="0 0 20 20"><path d="M5.5 2.8h6l3.7 3.7v9.9a1.3 1.3 0 0 1-1.3 1.3H5.5a1.3 1.3 0 0 1-1.3-1.3V4.1a1.3 1.3 0 0 1 1.3-1.3z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11.3 2.8v3.9h3.9M7 10.5h6M7 13.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+      <symbol id="i-mic" viewBox="0 0 20 20"><rect x="7.2" y="2.5" width="5.6" height="9.5" rx="2.8" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 9.5a5.5 5.5 0 0 0 11 0M10 15v2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 20 20"><circle cx="10" cy="10" r="3.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 2v1.8M10 16.2V18M2 10h1.8M16.2 10H18M4.3 4.3l1.3 1.3M14.4 14.4l1.3 1.3M4.3 15.7l1.3-1.3M14.4 5.6l1.3-1.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 20 20"><path d="M16.2 12.3A6.8 6.8 0 0 1 7.7 3.8a6.8 6.8 0 1 0 8.5 8.5z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 20 20"><path d="M3.5 7h13M3.5 13h13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+      <symbol id="i-close" viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+      <symbol id="i-search" viewBox="0 0 20 20"><circle cx="9" cy="9" r="5.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13 13l3.5 3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2.5 10h15M10 2.5c2.2 2.3 3 4.8 3 7.5s-.8 5.2-3 7.5c-2.2-2.3-3-4.8-3-7.5s.8-5.2 3-7.5z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+      <symbol id="i-terminal" viewBox="0 0 20 20"><rect x="2.5" y="3.5" width="15" height="13" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 8l2.5 2L6 12M10.5 12.5H14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-sliders" viewBox="0 0 20 20"><path d="M4 5.5h12M4 10h12M4 14.5h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".45"/><circle cx="7" cy="5.5" r="2" fill="currentColor"/><circle cx="13" cy="10" r="2" fill="currentColor"/><circle cx="9" cy="14.5" r="2" fill="currentColor"/></symbol>
+      <symbol id="i-podcast" viewBox="0 0 20 20"><circle cx="7" cy="8" r="2.6" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="13.5" cy="8" r="2.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2.8 16.5a4.3 4.3 0 0 1 8.4 0M9.3 16.5a4.3 4.3 0 0 1 8.4 0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+      <symbol id="i-cloud" viewBox="0 0 20 20"><path d="M6 15.5h8.3a3.2 3.2 0 0 0 .3-6.4 4.8 4.8 0 0 0-9.2-.9A3.7 3.7 0 0 0 6 15.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+      <symbol id="i-laptop" viewBox="0 0 20 20"><rect x="4" y="4" width="12" height="8.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2 15.5h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+      <symbol id="i-motion" viewBox="0 0 20 20"><circle cx="10" cy="10" r="3" fill="currentColor"/><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="1.4" opacity=".5"/><path d="M2.5 10h2M15.5 10h2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".5"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 20 20"><path d="M10 4.5v11M4.5 10h11" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+      <symbol id="i-inspector" viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="12" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 4v12" stroke="currentColor" stroke-width="1.5"/></symbol>
+      <symbol id="i-sidebar" viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="12" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 4v12" stroke="currentColor" stroke-width="1.5"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="Vexel, back to top">
+        <img src="assets/img/app-icon-128.webp" alt="" width="30" height="30">
+        Vexel
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav__links" role="list">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#podcasts">Podcasts</a></li>
+          <li><a href="#voices">Voices</a></li>
+          <li><a href="#agents">Automation</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Switch color theme" data-theme-toggle>
+          <svg class="i-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+          <svg class="i-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        </button>
+        <a class="btn btn--primary btn--sm nav__cta" href="https://setapp.com/apps/vexel">Get on Setapp</a>
+        <button class="icon-btn nav__menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu" data-menu-open>
+          <svg aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+    <div class="menu__top">
+      <a class="brand" href="#top" data-menu-link><img src="assets/img/app-icon-128.webp" alt="" width="30" height="30">Vexel</a>
+      <button class="icon-btn" type="button" aria-label="Close menu" data-menu-close><svg aria-hidden="true"><use href="#i-close"/></svg></button>
+    </div>
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="#features" data-menu-link>Features <span>01–05</span></a>
+      <a href="#podcasts" data-menu-link>Podcasts <span>New</span></a>
+      <a href="#voices" data-menu-link>Voices</a>
+      <a href="#agents" data-menu-link>Automation</a>
+      <a href="#demo" data-menu-link>Hear a sample</a>
+      <a href="#faq" data-menu-link>FAQ</a>
+    </nav>
+    <div class="menu__foot">
+      <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Get Vexel on Setapp</a>
+      <p>macOS 15+ · Apple Silicon</p>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__copy">
+        <p class="hero__badge"><a href="#podcasts"><b>New</b> Podcasts with several AI hosts <span>See how</span></a></p>
+        <h1 id="hero-title">Any text. <em>Any voice.</em></h1>
+        <p class="hero__sub">Vexel turns articles, documents and ideas into natural speech — or a full podcast with several hosts. A calm, native workspace, right on your Mac.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Get Vexel on Setapp <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost btn--lg" href="#demo"><svg aria-hidden="true"><use href="#i-play"/></svg> Hear a sample</a>
+        </div>
+        <ul class="trust-row" role="list">
+          <li><svg aria-hidden="true"><use href="#i-laptop"/></svg>macOS 15+</li>
+          <li><svg aria-hidden="true"><use href="#i-chip"/></svg>Apple Silicon native</li>
+          <li><svg aria-hidden="true"><use href="#i-user-off"/></svg>No account</li>
+          <!-- TODO(copy): rating badge slot — add only when there is a real rating to show -->
+        </ul>
+      </div>
+
+      <div class="hero__visual">
+        <div class="orb" aria-hidden="true"></div>
+        <div class="container">
+          <!-- TODO(asset): replace with a real screenshot when available; this mockup is built in HTML/CSS -->
+          <figure class="window reveal" aria-label="Vexel app window showing a podcast project with a script, a cast of three voices and a color-coded timeline">
+            <div class="window__bar" aria-hidden="true">
+              <span class="lights"><i></i><i></i><i></i></span>
+              <span class="window__title">Morning briefing</span>
+              <span class="window__tools">
+                <span><svg><use href="#i-sidebar"/></svg></span>
+                <span><svg><use href="#i-inspector"/></svg></span>
+              </span>
+            </div>
+            <div class="window__body" aria-hidden="true">
+              <aside class="w-sidebar">
+                <div class="w-sidebar__new"><svg width="14" height="14"><use href="#i-plus"/></svg>New project</div>
+                <h4>Voiceovers</h4>
+                <ul>
+                  <li><span class="dot" style="background:var(--spk-4)"></span>Chapter 3 — draft<em>6</em></li>
+                  <li><span class="dot" style="background:var(--spk-2)"></span>Launch video VO<em>3</em></li>
+                  <li><span class="dot" style="background:var(--spk-3)"></span>Weekly newsletter<em>2</em></li>
+                </ul>
+                <h4>Podcasts</h4>
+                <ul>
+                  <li class="is-active"><span class="dot" style="background:var(--spk-1)"></span>Morning briefing<em>1</em></li>
+                  <li><span class="dot" style="background:var(--spk-2)"></span>Book club, ep. 4<em>2</em></li>
+                </ul>
+                <div class="w-sidebar__credits">AI+ credits<b>Balance · TODO</b></div>
+              </aside>
+
+              <div class="w-main">
+                <div class="w-main__head">
+                  <div>
+                    <h5>Morning briefing</h5>
+                    <p>3 hosts · 12 lines · Natural</p>
+                  </div>
+                  <span class="w-pill w-pill--ai"><svg><use href="#i-spark"/></svg>Made with AI</span>
+                </div>
+                <div class="script">
+                  <div class="line">
+                    <span class="avatar" style="background:var(--spk-1)">NO</span>
+                    <div><div class="line__who">Noor · Host</div><div class="line__text">Good morning. Three stories today, and one of them is about bridges.</div></div>
+                  </div>
+                  <div class="line is-playing">
+                    <span class="avatar" style="background:var(--spk-2)">SA</span>
+                    <div><div class="line__who">Sam · Expert</div><div class="line__text">Old bridges, mostly. <mark>Cities are learning</mark> to listen to them before they crack.</div></div>
+                  </div>
+                  <div class="line">
+                    <span class="avatar" style="background:var(--spk-3)">JO</span>
+                    <div><div class="line__who">Jo · Curious newcomer</div><div class="line__text">Wait — listen to a bridge? How does that even work?</div></div>
+                  </div>
+                  <div class="line">
+                    <span class="avatar" style="background:var(--spk-1)">NO</span>
+                    <div><div class="line__who">Noor · Host</div><div class="line__text">Tiny sensors. They hear the steel stretch, long before anyone sees a crack.</div></div>
+                  </div>
+                </div>
+                <div class="w-timeline">
+                  <div class="w-timeline__row">
+                    <span class="w-play"><svg><use href="#i-pause"/></svg></span>
+                    <div class="segments">
+                      <i style="flex:14;background:var(--spk-1)"></i><i style="flex:18;background:var(--spk-2)"></i><i style="flex:9;background:var(--spk-3)"></i><i style="flex:16;background:var(--spk-2)"></i><i style="flex:8;background:var(--spk-1)"></i><i style="flex:12;background:var(--spk-3)"></i><i style="flex:15;background:var(--spk-2)"></i><i style="flex:10;background:var(--spk-1)"></i>
+                    </div>
+                    <span class="w-time">1:12 / 4:36</span>
+                  </div>
+                  <div class="w-legend"><span style="--c:var(--spk-1)">Noor</span><span style="--c:var(--spk-2)">Sam</span><span style="--c:var(--spk-3)">Jo</span></div>
+                </div>
+
+                <div class="dock">
+                  <span class="dock__input">Paste a script, an article or just a topic…</span>
+                  <span class="dock__chips">
+                    <span class="w-pill"><svg><use href="#i-mic"/></svg>Dictate</span>
+                    <span class="w-pill"><svg><use href="#i-wave"/></svg>3 voices</span>
+                  </span>
+                  <span class="dock__go"><span class="label">Generate</span><kbd>⌘↩</kbd></span>
+                </div>
+              </div>
+
+              <aside class="w-inspector">
+                <h6>Cast</h6>
+                <div class="cast">
+                  <div class="cast__row"><span class="avatar" style="background:var(--spk-1)">NO</span><div><b>Noor</b><small>Warm · English (UK)</small></div><span class="hifi">HI-FI</span></div>
+                  <div class="cast__row"><span class="avatar" style="background:var(--spk-2)">SA</span><div><b>Sam</b><small>Clear · English (US)</small></div><span class="hifi">HI-FI</span></div>
+                  <div class="cast__row"><span class="avatar" style="background:var(--spk-3)">JO</span><div><b>Jo</b><small>Bright · English (IN)</small></div><span class="hifi">HI-FI</span></div>
+                </div>
+                <h6 style="margin-top:18px">Delivery · Sam</h6>
+                <div class="seg"><span>Stable</span><span class="is-on">Natural</span><span>Expressive</span></div>
+                <div class="tune" style="margin-top:14px">
+                  <div class="slider"><div class="slider__top"><span>Variation</span><span>0.62</span></div><div class="slider__track"><i style="width:62%"></i></div></div>
+                  <div class="slider"><div class="slider__top"><span>Style</span><span>0.40</span></div><div class="slider__track"><i style="width:40%"></i></div></div>
+                </div>
+              </aside>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRUST STRIP ============ -->
+    <section class="trust-strip" aria-label="Who makes Vexel">
+      <div class="container">
+        <ul role="list">
+          <li>By <b>MacPaw</b></li>
+          <li class="sep" aria-hidden="true"></li>
+          <li>Voices powered by <b>Respeecher</b></li>
+          <li class="sep" aria-hidden="true"></li>
+          <li>Available on <b>Setapp</b></li>
+          <!-- TODO(asset): swap text for official logos once brand usage is approved -->
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ WHY ============ -->
+    <section class="section" aria-labelledby="why-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Why Vexel</p>
+          <h2 class="h2" id="why-title">A calmer way to turn words into sound.</h2>
+        </div>
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="card__icon"><svg aria-hidden="true"><use href="#i-wave"/></svg></div>
+            <h3 class="h3">Sounds human</h3>
+            <p>Hi-Fi cloud voices with real emotion, tone and character. Pick Stable, Natural or Expressive — or fine-tune every take.</p>
+            <p class="card__foot">English, Ukrainian, German, Portuguese, Arabic</p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon"><svg aria-hidden="true"><use href="#i-lock"/></svg></div>
+            <h3 class="h3">Private by choice</h3>
+            <p>No account to create. The audio you make stays on your Mac until you export it. Need to go fully offline? Use the voices built into macOS.</p>
+            <p class="card__foot">Anonymous analytics · off with one switch</p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon"><svg aria-hidden="true"><use href="#i-laptop"/></svg></div>
+            <h3 class="h3">Made for Mac</h3>
+            <p>A native app, not a browser tab. Keyboard-first, glassy and quiet, with the interface in eight languages — including full right-to-left Arabic.</p>
+            <p class="card__foot"><kbd>⌘</kbd><kbd>↩</kbd> generates, from anywhere</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURE STORY 01–05 ============ -->
+    <section class="section section--band" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">How Vexel works for you</p>
+          <h2 class="h2" id="features-title">From a blank page to a finished episode, in five moves.</h2>
+        </div>
+
+        <div class="story">
+          <!-- 01 Podcasts -->
+          <article class="chapter" id="podcasts" aria-labelledby="ch1">
+            <div class="chapter__copy reveal">
+              <div class="chapter__num" aria-hidden="true">01</div>
+              <p class="chapter__kicker">Podcasts</p>
+              <h3 class="h2" id="ch1">A whole show from one topic.</h3>
+              <p class="lead">Give Vexel an article or just an idea. Make with AI writes a natural conversation between several hosts, casts a voice for each, and lets you edit every line before you hit play.</p>
+              <ul class="checks" role="list">
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Describe the style — "curious newcomer and expert", "light and funny"</li>
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Click to edit, drag to reorder, reassign any line to another host</li>
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>A color timeline shows who speaks when; export one audio file</li>
+              </ul>
+              <p class="detail"><b>Up to 20 speakers</b> and 500 lines per episode · AI scripts use Setapp AI+</p>
+            </div>
+            <div class="stage reveal">
+              <div class="panel">
+                <div class="pod-steps">
+                  <div class="pod-step"><span>1</span><div><b>Topic</b><p>"Why old bridges are getting sensors — for a curious newcomer"</p><span class="w-pill w-pill--ai"><svg><use href="#i-spark"/></svg>Make with AI</span></div></div>
+                  <div class="pod-step"><span>2</span><div><b>Script and cast</b><p>12 lines · 3 hosts, voices assigned automatically</p>
+                    <div class="pod-cast"><span class="avatar" style="background:var(--spk-1)">N</span><span class="avatar" style="background:var(--spk-2)">S</span><span class="avatar" style="background:var(--spk-3)">J</span></div></div></div>
+                  <div class="pod-step"><span>3</span><div style="min-width:0"><b>Listen and export</b>
+                    <div class="w-timeline" style="margin-top:8px"><div class="w-timeline__row"><span class="w-play"><svg><use href="#i-play"/></svg></span><div class="segments"><i style="flex:14;background:var(--spk-1)"></i><i style="flex:18;background:var(--spk-2)"></i><i style="flex:9;background:var(--spk-3)"></i><i style="flex:16;background:var(--spk-2)"></i><i style="flex:8;background:var(--spk-1)"></i><i style="flex:12;background:var(--spk-3)"></i></div><span class="w-time">4:36</span></div></div>
+                  </div></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 02 Voices -->
+          <article class="chapter" id="voices" aria-labelledby="ch2">
+            <div class="chapter__copy reveal">
+              <div class="chapter__num" aria-hidden="true">02</div>
+              <p class="chapter__kicker">Voices</p>
+              <h3 class="h2" id="ch2">Two kinds of voices. One list.</h3>
+              <p class="lead">Hi-Fi cloud voices give you the most natural sound, in five languages and many accents. The voices already on your Mac are free and work offline. Search, filter by language, and preview any voice with one click.</p>
+              <ul class="checks" role="list">
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Hi-Fi badge marks the most natural voices</li>
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Hear a sample line in the voice's own language</li>
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Save a voice you've tuned as your own preset</li>
+              </ul>
+              <p class="detail"><b>Offline?</b> Switch to Mac voices — no internet needed</p>
+            </div>
+            <div class="stage reveal">
+              <div class="panel">
+                <div class="vp__tabs"><span class="is-on">Cloud</span><span>On this Mac</span></div>
+                <div class="vp__search"><div><svg><use href="#i-search"/></svg>Search voices…</div><span>English <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span></div>
+                <div class="vp__list">
+                  <div class="vp__row is-on"><span class="avatar" style="background:var(--spk-1)">NO</span><div><b>Noor</b><small>Female · warm</small></div><span class="flag">UK</span><span class="vp__play"><svg><use href="#i-play"/></svg></span></div>
+                  <div class="vp__row"><span class="avatar" style="background:var(--spk-2)">SA</span><div><b>Sam</b><small>Male · clear</small></div><span class="flag">US</span><span class="vp__play"><svg><use href="#i-play"/></svg></span></div>
+                  <div class="vp__row"><span class="avatar" style="background:var(--spk-3)">JO</span><div><b>Jo</b><small>Female · bright</small></div><span class="flag">IN</span><span class="vp__play"><svg><use href="#i-play"/></svg></span></div>
+                  <div class="vp__row"><span class="avatar" style="background:var(--spk-4)">AR</span><div><b>Arlo</b><small>Male · calm</small></div><span class="flag">AU</span><span class="vp__play"><svg><use href="#i-play"/></svg></span></div>
+                </div>
+                <div class="vp__lang"><span>English</span><span>Українська</span><span>Deutsch</span><span>Português (BR)</span><span>العربية</span></div>
+              </div>
+              <!-- TODO(copy): voice names above are illustrative — swap for real catalog names -->
+            </div>
+          </article>
+
+          <!-- 03 Add text -->
+          <article class="chapter" aria-labelledby="ch3">
+            <div class="chapter__copy reveal">
+              <div class="chapter__num" aria-hidden="true">03</div>
+              <p class="chapter__kicker">Add text</p>
+              <h3 class="h2" id="ch3">Paste it, say it, or drop the file.</h3>
+              <p class="lead">Bring a chapter, a report or an email. Vexel opens seven document formats, notices the language on its own, and highlights each word as it's read.</p>
+              <ul class="checks" role="list">
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>PDF, EPUB, DOCX, Markdown, RTF, RTFD and TXT</li>
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Dictate straight into the input</li>
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>A gentle hint flags hashtags and symbols that would sound odd</li>
+              </ul>
+              <p class="detail"><kbd>⌘</kbd><kbd>⌥</kbd><kbd>⇧</kbd><kbd>V</kbd> <b>pastes clean text</b>, without formatting</p>
+            </div>
+            <div class="stage reveal">
+              <div class="panel">
+                <div class="formats" aria-hidden="true">
+                  <span class="fmt"><svg><use href="#i-doc"/></svg>PDF</span><span class="fmt"><svg><use href="#i-doc"/></svg>EPUB</span><span class="fmt"><svg><use href="#i-doc"/></svg>DOCX</span><span class="fmt"><svg><use href="#i-doc"/></svg>MD</span><span class="fmt"><svg><use href="#i-doc"/></svg>RTF</span><span class="fmt"><svg><use href="#i-doc"/></svg>TXT</span>
+                </div>
+                <div class="drop"><span class="drop__file">EPUB</span><div><b>The Quiet Harbor.epub</b><small>Chapter 1 · 3,420 words · English detected</small></div></div>
+                <p class="readalong"><span class="done">The harbor was quiet that morning. Boats knocked softly against the pier, and the gulls </span><mark>waited</mark> for the first fishermen to arrive with their nets and their stories.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- 04 Tune -->
+          <article class="chapter" aria-labelledby="ch4">
+            <div class="chapter__copy reveal">
+              <div class="chapter__num" aria-hidden="true">04</div>
+              <p class="chapter__kicker">Tune, trim, compare</p>
+              <h3 class="h2" id="ch4">Get the take you hear in your head.</h3>
+              <p class="lead">Start with Stable, Natural or Expressive. Nudge simple sliders, or open Advanced for full control. Trim the edges, then compare takes — every one is saved in the project.</p>
+              <ul class="checks" role="list">
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Plain-language sliders, with Advanced for power users</li>
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Set a seed to get the same take again</li>
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Trim is baked into the exported file</li>
+              </ul>
+              <p class="detail"><kbd>⌘</kbd><kbd>↩</kbd> <b>makes a new take</b> — the old one stays in history</p>
+            </div>
+            <div class="stage reveal">
+              <div class="panel tune">
+                <div class="seg" style="margin-top:0"><span>Stable</span><span class="is-on">Natural</span><span>Expressive</span></div>
+                <div class="slider"><div class="slider__top"><span>Variation</span><span>0.62</span></div><div class="slider__track"><i style="width:62%"></i></div></div>
+                <div class="slider"><div class="slider__top"><span>Style</span><span>0.40</span></div><div class="slider__track"><i style="width:40%"></i></div></div>
+                <div class="trim"><div class="wave" data-wave="64" data-seed="7"></div><div class="trim__keep"></div></div>
+                <div class="takes">
+                  <div class="take is-on"><b>Take 3</b><div class="wave" data-wave="40" data-seed="3" style="color:var(--brand)"></div><small>0:18</small></div>
+                  <div class="take"><b>Take 2</b><div class="wave" data-wave="40" data-seed="11" style="color:rgba(255,255,255,.5)"></div><small>0:19</small></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 05 Agents -->
+          <article class="chapter" id="agents" aria-labelledby="ch5">
+            <div class="chapter__copy reveal">
+              <div class="chapter__num" aria-hidden="true">05</div>
+              <p class="chapter__kicker">AI agents &amp; automation</p>
+              <h3 class="h2" id="ch5">Let your agent do the reading.</h3>
+              <p class="lead">Turn on automation and Claude — or any agent that speaks MCP — can list voices, create projects and batch-generate audio from your scripts and files. There's a command-line tool too.</p>
+              <ul class="checks" role="list">
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Off by default; reachable only from your own Mac</li>
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Protected by a private token</li>
+                <li><svg aria-hidden="true"><use href="#i-check"/></svg>Agents never see your keys or account</li>
+              </ul>
+              <div class="mcp-tools" aria-label="MCP tools"><code>list_voices</code><code>list_projects</code><code>create_project</code><code>generate_audio</code></div>
+            </div>
+            <div class="stage reveal">
+              <div class="term">
+                <div class="term__bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>Terminal — zsh</div>
+<pre><code><span class="c"># one audio file per line of the script</span>
+<span class="p">$</span> vexel generate <span class="k">--project</span> morning-briefing \
+    <span class="k">--voice</span> noor <span class="k">--text-file</span> lines.txt \
+    <span class="k">--out</span> ./audio
+<span class="ok">✓</span> 12 lines queued
+<span class="ok">✓</span> Done · 12 files in ./audio
+
+<span class="p">$</span> vexel health
+<span class="ok">✓</span> Vexel is running · automation on</code></pre>
+              </div>
+              <!-- TODO(copy): confirm example ids/flags with the CLI docs before launch -->
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DEMO ============ -->
+    <section class="section" id="demo" aria-labelledby="demo-title">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <p class="eyebrow">Hear it in action</p>
+          <h2 class="h2" id="demo-title">Type something. Press play.</h2>
+          <p class="lead">Pick a sample or write your own line, choose a voice, and watch Vexel read along.</p>
+        </div>
+
+        <div class="demo reveal" data-demo>
+          <div>
+            <div class="demo__samples" role="group" aria-label="Sample texts">
+              <button class="pill-btn" type="button" aria-pressed="true" data-sample="0">Article</button>
+              <button class="pill-btn" type="button" aria-pressed="false" data-sample="1">Story</button>
+              <button class="pill-btn" type="button" aria-pressed="false" data-sample="2">Email</button>
+            </div>
+            <div class="demo__editor">
+              <label class="sr-only" for="demo-text">Text to read aloud</label>
+              <textarea id="demo-text" maxlength="280" spellcheck="false">Rain is back in the forecast for Thursday. Pack a light jacket, and leave a little earlier than usual — the bridge will be slow.</textarea>
+              <div class="demo__readout" aria-hidden="true" data-readout></div>
+            </div>
+            <div class="demo__meta"><span data-count>0 / 280</span><span>English detected</span></div>
+            <div class="demo__player">
+              <button class="play-btn" type="button" aria-pressed="false" aria-label="Play sample" data-play>
+                <svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg>
+                <svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg>
+              </button>
+              <div class="demo__wave" aria-hidden="true"><div class="wave" data-wave="72" data-seed="5" data-demo-wave></div></div>
+              <span class="demo__time" data-time>0:00</span>
+            </div>
+            <p class="sr-only" aria-live="polite" data-status></p>
+          </div>
+
+          <div class="demo__side">
+            <h3 id="voice-label">Voice</h3>
+            <div class="tabs" role="tablist" aria-label="Voice type">
+              <button type="button" role="tab" id="tab-cloud" aria-selected="true" aria-controls="panel-cloud" data-tab="cloud">Cloud · Hi-Fi</button>
+              <button type="button" role="tab" id="tab-mac" aria-selected="false" aria-controls="panel-mac" data-tab="mac" tabindex="-1">On this Mac</button>
+            </div>
+            <div class="voices" role="radiogroup" aria-labelledby="voice-label" id="panel-cloud" data-panel="cloud">
+              <button class="voice" type="button" role="radio" aria-checked="true"><span class="voice__av" style="background:var(--spk-1)">NO</span><span><b>Noor</b><small>Warm · English (UK)</small></span><span class="voice__tag">HI-FI</span></button>
+              <button class="voice" type="button" role="radio" aria-checked="false" tabindex="-1"><span class="voice__av" style="background:var(--spk-2)">SA</span><span><b>Sam</b><small>Clear · English (US)</small></span><span class="voice__tag">HI-FI</span></button>
+              <button class="voice" type="button" role="radio" aria-checked="false" tabindex="-1"><span class="voice__av" style="background:var(--spk-3)">JO</span><span><b>Jo</b><small>Bright · English (IN)</small></span><span class="voice__tag">HI-FI</span></button>
+            </div>
+            <div class="voices" role="radiogroup" aria-labelledby="voice-label" id="panel-mac" data-panel="mac" hidden>
+              <button class="voice" type="button" role="radio" aria-checked="true"><span class="voice__av" style="background:#C9CBD3">SY</span><span><b>System voice</b><small>English (US) · Enhanced</small></span><span class="voice__tag voice__tag--off">OFFLINE</span></button>
+              <button class="voice" type="button" role="radio" aria-checked="false" tabindex="-1"><span class="voice__av" style="background:#C9CBD3">SY</span><span><b>System voice</b><small>English (UK) · Premium</small></span><span class="voice__tag voice__tag--off">OFFLINE</span></button>
+            </div>
+            <p class="demo__note">A visual preview. Real voice clips are coming to this page soon. <!-- TODO(asset): real sample clips per voice --></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ HOW IT WORKS ============ -->
+    <section class="section section--tight" aria-labelledby="how-title">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <p class="eyebrow">How it works</p>
+          <h2 class="h2" id="how-title">Three steps. No sign-up.</h2>
+        </div>
+        <ol class="steps" role="list">
+          <li class="step reveal">
+            <span class="step__n">1</span>
+            <h3 class="h3">Add text</h3>
+            <p>Paste, dictate, or drop a document. Or give Vexel a topic for a podcast.</p>
+            <div class="step__vis" aria-hidden="true"><div class="mini"><div class="row"><span class="fmt" style="padding:4px 8px">PDF</span><span class="fmt" style="padding:4px 8px">EPUB</span><span class="fmt" style="padding:4px 8px">DOCX</span></div><div class="bar" style="width:92%"></div><div class="bar" style="width:74%"></div></div></div>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">2</span>
+            <h3 class="h3">Pick a voice</h3>
+            <p>Choose a Hi-Fi cloud voice or a free Mac voice. Tune the delivery if you like.</p>
+            <div class="step__vis" aria-hidden="true"><div class="mini"><div class="row"><span class="avatar" style="background:var(--spk-1)">NO</span><div style="flex:1"><div class="bar" style="width:60%;margin-bottom:6px"></div><div class="bar" style="width:40%;opacity:.6"></div></div><span class="hifi">HI-FI</span></div><div class="seg" style="margin:0"><span>Stable</span><span class="is-on">Natural</span><span>Expressive</span></div></div></div>
+          </li>
+          <li class="step reveal">
+            <span class="step__n">3</span>
+            <h3 class="h3">Listen and export</h3>
+            <p>Preview, trim, compare takes, then export a WAV file you can use anywhere.</p>
+            <div class="step__vis" aria-hidden="true"><div class="mini"><div class="wave" data-wave="48" data-seed="9"></div><div class="row" style="justify-content:space-between"><span style="color:var(--app-t3)">Take 3 · 0:18</span><span class="w-pill">Export WAV</span></div></div></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ COMPARISON ============ -->
+    <section class="section" aria-labelledby="compare-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">The usual way vs Vexel</p>
+          <h2 class="h2" id="compare-title">Less tab-juggling. More listening.</h2>
+          <p class="lead">Most text-to-speech lives in a browser tab behind a sign-up. Vexel lives on your Mac.</p>
+        </div>
+        <div class="compare-wrap reveal">
+          <table class="compare">
+            <caption class="sr-only">Comparison of a typical web text-to-speech tool and Vexel</caption>
+            <thead>
+              <tr><th scope="col">What you need</th><th scope="col">Typical web tool</th><th scope="col" class="vx"><span class="vx-head"><img src="assets/img/app-icon-128.webp" alt="" width="20" height="20" loading="lazy">Vexel</span></th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Create an account</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Usually required</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>Not needed</span></td></tr>
+              <tr><th scope="row">Work offline</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>No</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>With Mac voices</span></td></tr>
+              <tr><th scope="row">Open PDF, EPUB, DOCX</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Often limited</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>7 formats</span></td></tr>
+              <tr><th scope="row">Keep every take</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Varies</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>Per project</span></td></tr>
+              <tr><th scope="row">Podcast with several hosts</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Rare</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>Built in</span></td></tr>
+              <tr><th scope="row">Access for AI agents</th><td data-label="Web tool"><span class="mark mark--no"><svg aria-hidden="true"><use href="#i-minus"/></svg>Cloud API keys</span></td><td class="vx" data-label="Vexel"><span class="mark mark--yes"><svg aria-hidden="true"><use href="#i-check"/></svg>Local CLI + MCP</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROOF (placeholders) ============ -->
+    <section class="section section--band" aria-labelledby="proof-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Stories</p>
+          <h2 class="h2" id="proof-title">What people make with Vexel.</h2>
+          <p class="lead">Real stories from early users are on their way.</p>
+        </div>
+        <div class="proof">
+          <!-- TODO(copy): replace all three cards with real, approved testimonials and metrics -->
+          <article class="proof-card reveal">
+            <span class="todo-tag">TODO(copy)</span>
+            <p class="proof-card__metric">—<small>Hero metric, e.g. hours saved per episode</small></p>
+            <blockquote>Placeholder for a short quote from a podcaster about going from a topic to a finished episode.</blockquote>
+            <footer><span class="ph" aria-hidden="true"></span><div><b>Name Surname</b><span>Role, show name</span></div></footer>
+          </article>
+          <article class="proof-card reveal">
+            <span class="todo-tag">TODO(copy)</span>
+            <p class="proof-card__metric">—<small>Hero metric</small></p>
+            <blockquote>Placeholder for a writer who listens back to drafts.</blockquote>
+            <footer><span class="ph" aria-hidden="true"></span><div><b>Name Surname</b><span>Author</span></div></footer>
+          </article>
+          <article class="proof-card reveal">
+            <span class="todo-tag">TODO(copy)</span>
+            <p class="proof-card__metric">—<small>Hero metric</small></p>
+            <blockquote>Placeholder for a developer using the MCP server.</blockquote>
+            <footer><span class="ph" aria-hidden="true"></span><div><b>Name Surname</b><span>Developer</span></div></footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GET VEXEL ============ -->
+    <section class="section" id="get" aria-labelledby="get-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Get Vexel</p>
+          <h2 class="h2" id="get-title">Included with Setapp.</h2>
+        </div>
+        <div class="get">
+          <div class="get-card reveal">
+            <div class="orb" aria-hidden="true"></div>
+            <div class="get-card__top">
+              <img src="assets/img/app-icon-128.webp" alt="" width="64" height="64" loading="lazy">
+              <div><b>Vexel</b><span>by MacPaw · on Setapp</span></div>
+            </div>
+            <h3>The app comes with your Setapp membership.</h3>
+            <ul role="list">
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Mac voices are free</b> — use them as much as you like, offline.</span></li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Hi-Fi voices and AI scripts</b> use Setapp AI+ credits. Your balance is always visible in the app.</span></li>
+              <li><svg aria-hidden="true"><use href="#i-check"/></svg><span><b>Top up any time</b> from inside Vexel.</span></li>
+            </ul>
+            <div class="get-card__cta">
+              <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Get Vexel on Setapp <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <small>Price: TODO(copy)</small>
+            </div>
+          </div>
+          <div class="reqs reveal">
+            <h3 class="h3">Requirements</h3>
+            <dl>
+              <div><dt>macOS</dt><dd>15 Sequoia or later</dd></div>
+              <div><dt>Mac</dt><dd>Apple Silicon (M1 or newer)</dd></div>
+              <div><dt>Internet</dt><dd>For Hi-Fi voices and AI scripts</dd></div>
+              <div><dt>Export</dt><dd>WAV audio</dd></div>
+              <div><dt>Version</dt><dd>1.5.0 · 27 MB</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MAC CRAFT ============ -->
+    <section class="section section--band" aria-labelledby="craft-title">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Made for Mac</p>
+          <h2 class="h2" id="craft-title">Keyboard-first. Quiet by design.</h2>
+        </div>
+        <div class="craft">
+          <div class="kbd-grid reveal" aria-label="Keyboard shortcuts">
+            <div class="kbd-row"><span>Generate</span><span><kbd>⌘</kbd><kbd>↩</kbd></span></div>
+            <div class="kbd-row"><span>New project</span><span><kbd>⌘</kbd><kbd>N</kbd></span></div>
+            <div class="kbd-row"><span>Toggle sidebar</span><span><kbd>⌃</kbd><kbd>⌘</kbd><kbd>S</kbd></span></div>
+            <div class="kbd-row"><span>Toggle inspector</span><span><kbd>⌥</kbd><kbd>⌘</kbd><kbd>I</kbd></span></div>
+            <div class="kbd-row"><span>Paste clean text</span><span><kbd>⌘</kbd><kbd>⌥</kbd><kbd>⇧</kbd><kbd>V</kbd></span></div>
+            <div class="kbd-row"><span>Settings</span><span><kbd>⌘</kbd><kbd>,</kbd></span></div>
+            <div class="kbd-row"><span>Help</span><span><kbd>⌘</kbd><kbd>?</kbd></span></div>
+            <div class="kbd-row"><span>Collapse input</span><span><kbd>esc</kbd></span></div>
+          </div>
+          <div class="craft__side">
+            <div class="rtl-demo reveal">
+              <div class="rtl-demo__head">
+                <div><h3 class="h4">Eight languages, live</h3><p class="muted" style="font-size:var(--fs-sm)">Switch in Settings — no restart.</p></div>
+                <div class="tabs" role="group" aria-label="Preview language">
+                  <button type="button" aria-pressed="true" data-dir="ltr">EN</button>
+                  <button type="button" aria-pressed="false" data-dir="rtl">AR</button>
+                </div>
+              </div>
+              <div class="panel" dir="ltr" lang="en" data-rtl-panel aria-live="polite">
+                <div class="rtl-ui">
+                  <div class="rtl-ui__side">
+                    <span class="is-on" data-t="newProject">New project</span>
+                    <span class="h" data-t="voiceovers">Voiceovers</span>
+                    <span data-t="readItBack">Read it back</span>
+                    <span class="h" data-t="podcasts">Podcasts</span>
+                    <span data-t="makePodcast">Make a podcast</span>
+                  </div>
+                  <div class="rtl-ui__main">
+                    <b data-t="title">What are we making?</b>
+                    <p data-t="search">Search voices…</p>
+                    <span class="w-pill w-pill--ai" data-t="generateAll">Generate all</span>
+                  </div>
+                </div>
+              </div>
+              <p class="small-note">English · Deutsch · Español · Français · Português · Українська · 日本語 · العربية</p>
+            </div>
+            <div class="motion-card reveal">
+              <div class="card__icon"><svg aria-hidden="true"><use href="#i-motion"/></svg></div>
+              <div><h3 class="h4">Calm when you need it</h3><p>Turn on Reduce animations and the glow settles down. Dark glass that fits right in on macOS.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-layout">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2 class="h2" id="faq-title">Good questions.</h2>
+          <p class="lead">Something else? <a class="accent" href="mailto:TODO@macpaw.com">Write to us</a>.<!-- TODO(copy): support email / help center link --></p>
+        </div>
+        <div class="faq">
+          <details><summary>Is Vexel a voice changer?<span class="plus" aria-hidden="true"></span></summary><div><p>No. Vexel is text-to-speech: you give it text, it gives you speech. It doesn't change a recorded voice in real time.</p></div></details>
+          <details><summary>Can it clone my voice?<span class="plus" aria-hidden="true"></span></summary><div><p>Not today. You choose from the Hi-Fi cloud voices and the voices installed on your Mac.</p></div></details>
+          <details><summary>Does it work offline?<span class="plus" aria-hidden="true"></span></summary><div><p>Yes — with the voices built into macOS. Hi-Fi cloud voices and Make with AI need an internet connection.</p></div></details>
+          <details><summary>What can I import?<span class="plus" aria-hidden="true"></span></summary><div><p>PDF, EPUB, DOCX, Markdown, RTF, RTFD and TXT. You can also paste text or dictate it.</p></div></details>
+          <details><summary>What can I export?<span class="plus" aria-hidden="true"></span></summary><div><p>WAV audio — a single voice, or a full multi-host episode in one file.</p></div></details>
+          <details><summary>Which languages are supported?<span class="plus" aria-hidden="true"></span></summary><div><p>Hi-Fi cloud voices speak English (with several accents), Ukrainian, German, Brazilian Portuguese and Arabic. Mac voices cover every language installed in macOS.</p><p>The app itself is available in English, German, Spanish, French, Portuguese, Ukrainian, Japanese and Arabic.</p></div></details>
+          <details><summary>Do I need an account? What happens to my text?<span class="plus" aria-hidden="true"></span></summary><div><p>There's no Vexel account. Audio you make is stored on your Mac and only leaves when you export it.</p><p>When you use a cloud voice, the text is sent securely to be voiced. Analytics are anonymous, never include your text or audio, and can be turned off in Settings.</p></div></details>
+          <details><summary>Which Macs are supported?<span class="plus" aria-hidden="true"></span></summary><div><p>Macs with Apple Silicon (M1 or newer) running macOS 15 Sequoia or later.</p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="final" aria-labelledby="final-title">
+      <div class="orb orb--soft" aria-hidden="true"></div>
+      <div class="container final__inner">
+        <h2 id="final-title">What are we making?</h2>
+        <p>Turn reading into listening — a chapter, a briefing, a whole show.</p>
+        <div class="hero__ctas">
+          <a class="btn btn--primary btn--lg" href="https://setapp.com/apps/vexel">Get Vexel on Setapp <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn--ghost btn--lg" href="#demo"><svg aria-hidden="true"><use href="#i-play"/></svg> Hear a sample</a>
+        </div>
+        <ul class="chips" role="list">
+          <li><svg aria-hidden="true"><use href="#i-user-off"/></svg>No account</li>
+          <li><svg aria-hidden="true"><use href="#i-lock"/></svg>Audio stays on your Mac</li>
+          <li><svg aria-hidden="true"><use href="#i-laptop"/></svg>Free Mac voices</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a class="brand" href="#top"><img src="assets/img/app-icon-128.webp" alt="" width="30" height="30" loading="lazy">Vexel</a>
+          <p>A calmer voice for everyday writing. Built by people who like quiet rooms.</p>
+        </div>
+        <nav aria-labelledby="f-product"><h3 id="f-product">Product</h3>
+          <ul role="list"><li><a href="#features">Features</a></li><li><a href="#podcasts">Podcasts</a></li><li><a href="#agents">Automation</a></li><li><a href="#faq">FAQ</a></li></ul>
+        </nav>
+        <nav aria-labelledby="f-company"><h3 id="f-company">Company</h3>
+          <ul role="list"><li><a href="https://macpaw.com">MacPaw</a></li><li><a href="https://setapp.com/apps/vexel">Setapp</a></li><li><a href="#">Help center</a><!-- TODO(copy) --></li><li><a href="#">Contact</a><!-- TODO(copy) --></li></ul>
+        </nav>
+        <nav aria-labelledby="f-legal"><h3 id="f-legal">Legal</h3>
+          <ul role="list"><li><a href="#">Privacy Policy</a><!-- TODO(copy) --></li><li><a href="#">Terms of Service</a><!-- TODO(copy) --></li></ul>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 MacPaw Way Ltd. Voices powered by Respeecher.</span>
+        <!-- TODO(copy): social links -->
+        <span class="mac-badge"><svg aria-hidden="true"><use href="#i-laptop"/></svg><span><small>Made for</small><b>macOS</b></span></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/main.js" defer></script>
+</body>
+</html>
