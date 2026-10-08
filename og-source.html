@@ -1,0 +1,55 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: #0E0E10; }
+  body { position: relative; font-family: "Bricolage", sans-serif; color: #fff; }
+  /* pulse rings radiating from the icon */
+  .rings { position: absolute; left: 140px; top: 128px; width: 0; height: 0; }
+  .rings i { position: absolute; border-radius: 50%; border: 1.5px solid rgba(255,90,200,var(--a)); transform: translate(-50%,-50%); left: 0; top: 0; width: var(--s); height: var(--s); }
+  .glow { position: absolute; left: -260px; top: -260px; width: 820px; height: 820px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(255,0,170,.38), rgba(255,0,170,.12) 45%, rgba(154,91,255,.06) 70%, transparent 100%); }
+  .glow2 { position: absolute; right: -200px; bottom: -320px; width: 900px; height: 700px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(154,91,255,.22), transparent 100%); }
+  .icon { position: absolute; left: 96px; top: 84px; width: 88px; height: 88px; border-radius: 26px; box-shadow: 0 18px 50px -10px rgba(255,0,170,.8); }
+  .copy { position: absolute; left: 96px; top: 222px; width: 560px; }
+  h1 { margin: 0; font-weight: 600; font-size: 88px; line-height: .96; letter-spacing: -.045em; }
+  h1 em { font-style: normal; background: linear-gradient(100deg, #FFC2E6, #FF00AA 70%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { margin-top: 22px; font-size: 25px; line-height: 1.35; color: rgba(255,255,255,.72); letter-spacing: -.01em; }
+  .meta { position: absolute; left: 96px; bottom: 44px; display: flex; gap: 12px; align-items: center; font-size: 17px; color: rgba(255,255,255,.66); }
+  .meta b { color: #fff; font-weight: 600; }
+  .chip { padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); }
+  .chip--pink { background: #FF00AA; border-color: #FF00AA; color: #fff; font-weight: 700; }
+  .wordmark { position: absolute; left: 204px; top: 98px; font-size: 34px; font-weight: 700; letter-spacing: -.02em; }
+  .wordmark small { display: block; font-size: 16px; font-weight: 500; color: rgba(255,255,255,.55); letter-spacing: 0; margin-top: 2px; }
+  /* tilted app window on the right */
+  .shot { position: absolute; left: 640px; top: 70px; width: 760px; transform: perspective(1600px) rotateY(-14deg) rotateX(4deg) rotate(-1deg); transform-origin: left center; }
+  .shot img { width: 100%; border-radius: 16px; display: block; box-shadow: 0 40px 90px -20px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.1); }
+  .frame { position: absolute; inset: -9px; border-radius: 22px; padding: 1px; background: linear-gradient(180deg, rgba(255,120,210,.95), rgba(255,0,170,.3) 20%, rgba(255,255,255,.06) 60%, transparent);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
+  .pill { position: absolute; display: inline-flex; align-items: center; gap: 10px; padding: 11px 18px 11px 14px; border-radius: 14px; background: #fff; color: #141416;
+    font-size: 16px; font-weight: 600; box-shadow: 0 0 0 5px rgba(255,0,170,.2), 0 18px 40px -12px rgba(255,0,170,.7), 0 10px 24px -10px rgba(0,0,0,.6); white-space: nowrap; }
+  .pill small { display: block; font-weight: 500; font-size: 13px; color: #55555d; }
+  .pill .dot { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; background: #FFE3F4; color: #FF00AA; font-size: 16px; }
+  .eq { display: inline-flex; align-items: flex-end; gap: 2px; height: 16px; }
+  .eq i { width: 3px; background: #FF00AA; border-radius: 2px; }
+  .fade { position: absolute; right: 0; top: 0; bottom: 0; width: 140px; background: linear-gradient(90deg, transparent, #0E0E10); }
+  .fadeb { position: absolute; left: 600px; right: 0; bottom: 0; height: 120px; background: linear-gradient(transparent, #0E0E10); }
+</style></head>
+<body>
+  <div class="glow2"></div>
+  <div class="rings"><div class="glow"></div>
+    <i style="--s:170px;--a:.55"></i><i style="--s:270px;--a:.38"></i><i style="--s:400px;--a:.24"></i><i style="--s:560px;--a:.14"></i><i style="--s:760px;--a:.08"></i><i style="--s:1000px;--a:.05"></i>
+  </div>
+  <div class="shot"><div class="frame"></div><img src="assets/shots/hero-podcast-1800.webp" alt=""></div>
+  <div class="fade"></div><div class="fadeb"></div>
+  <span class="pill" style="left:742px; top:438px"><span class="dot"><span class="eq"><i style="height:40%"></i><i style="height:90%"></i><i style="height:60%"></i><i style="height:100%"></i><i style="height:50%"></i></span></span><span>One episode, many voices<small>3 hosts · auto-cast</small></span></span>
+  <span class="pill" style="left:930px; top:150px"><span class="dot">✦</span><span>69 Hi-Fi voices<small>5 languages</small></span></span>
+  <img class="icon" src="assets/img/app-icon-256.png" alt="">
+  <div class="wordmark">Vexel<small>by MacPaw · on Setapp</small></div>
+  <div class="copy">
+    <h1>Any text.<br><em>Any voice.</em></h1>
+    <p class="sub">Natural speech and multi-host<br>podcasts, right on your Mac.</p>
+  </div>
+  <div class="meta"><span class="chip chip--pink">Free on Setapp</span><span class="chip"><b>6,000</b> bonus AI credits</span><span class="chip">Voices by <b>Respeecher</b></span></div>
+</body></html>
