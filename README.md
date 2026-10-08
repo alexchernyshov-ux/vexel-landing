@@ -10,6 +10,14 @@ python3 -m http.server 4173
 
 Then open http://127.0.0.1:4173
 
+## Build for hosting
+
+```bash
+./build-dist.sh
+```
+
+Creates `dist/site/` (upload its contents to the web root) and `dist/vexel-landing-dist.zip`. Built from the committed `master` branch; `dist/` is not tracked in git.
+
 ## Files
 - `index.html` — the page. Sections run in this order: nav, hero, trust strip, why, story 01–05, demo, how it works, comparison, stories, get Vexel, FAQ, final CTA, footer.
 - `assets/styles.css` — the design tokens (`:root`), dark and light themes, components and sections.
